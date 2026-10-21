@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#070b14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>استوديو الذكاء الاصطناعي الاحترافي | Puter AI Pro</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Puter.js : بوابة الذكاء الاصطناعي + التخزين السحابي + قاعدة البيانات + المصادقة -->
+<script src="https://js.puter.com/v2/"></script>
+<!-- مكتبات العرض : Markdown + تلوين الأكواد (مع بديل تلقائي عند تعذّر التحميل) -->
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.10.0/highlight.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.10.0/styles/atom-one-dark.min.css">
+
+<style>
+
+/* ============================================================
+   نظام التصميم — Design System
+   ============================================================ */
+:root{
+  --brand:#6d5efc;
+  --brand-2:#c04cfd;
+  --accent:#22d3ee;
+  --ok:#22c55e;
+  --warn:#f59e0b;
+  --danger:#ef4444;
+  --info:#38bdf8;
+
+  --bg:#070b14;
+  --bg-2:#0a1020;
+  --surface:rgba(17,25,42,.78);
+  --surface-2:rgba(30,41,64,.55);
+  --surface-3:rgba(255,255,255,.05);
+  --border:rgba(255,255,255,.09);
+  --border-strong:rgba(255,255,255,.18);
+  --text:#e9eefb;
+  --text-strong:#fff;
+  --muted:#93a1bd;
+  --code-bg:#0d1424;
+
+  --grad-brand:linear-gradient(135deg,#6d5efc 0%,#a855f7 50%,#ec4899 100%);
+  --grad-cyan:linear-gradient(135deg,#06b6d4 0%,#3b82f6 100%);
+  --grad-ok:linear-gradient(135deg,#10b981,#059669);
+
+  --r-xs:8px; --r-sm:11px; --r:15px; --r-lg:22px; --r-full:999px;
+  --sh-1:0 2px 10px rgba(0,0,0,.25);
+  --sh-2:0 14px 40px rgba(0,0,0,.4);
+  --sh-3:0 28px 80px rgba(0,0,0,.55);
+  --ring:0 0 0 3px rgba(109,94,252,.28);
+  --nav-h:68px;
+}
+
+[data-theme="light"]{
+  --bg:#eef1f8;
+  --bg-2:#e3e8f4;
+  --surface:rgba(255,255,255,.88);
+  --surface-2:rgba(255,255,255,.7);
+  --surface-3:rgba(15,23,42,.04);
+  --border:rgba(15,23,42,.1);
+  --border-strong:rgba(15,23,42,.2);
+  --text:#111a2e;
+  --text-strong:#050b18;
+  --muted:#5b6982;
+  --code-bg:#0d1424;
+  --sh-1:0 2px 10px rgba(20,30,60,.08);
+  --sh-2:0 14px 40px rgba(20,30,60,.12);
+  --sh-3:0 28px 80px rgba(20,30,60,.2);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Cairo','Tajawal',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100dvh;
+  overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+  line-height:1.6;
+}
+body::before{
+  content:"";position:fixed;inset:-20%;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(38vw 38vw at 12% 8%,rgba(109,94,252,.28),transparent 60%),
+    radial-gradient(34vw 34vw at 88% 12%,rgba(236,72,153,.18),transparent 60%),
+    radial-gradient(40vw 40vw at 60% 92%,rgba(34,211,238,.16),transparent 60%);
+  filter:blur(30px);
+  animation:aurora 26s ease-in-out infinite alternate;
+}
+[data-theme="light"] body::before{opacity:.55}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(circle at 50% 30%,#000,transparent 85%);
+}
+@keyframes aurora{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(3%,-2%,0) scale(1.06)}
+  100%{transform:translate3d(-2%,3%,0) scale(1.03)}
+}
+::selection{background:rgba(109,94,252,.35)}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(130,145,180,.35);border-radius:9px}
+::-webkit-scrollbar-thumb:hover{background:rgba(130,145,180,.6)}
+:focus-visible{outline:none;box-shadow:var(--ring);border-radius:var(--r-sm)}
+
+/* ============ الهيكل العام ============ */
+.app{display:grid;grid-template-columns:250px 1fr;min-height:100dvh}
+.sidebar{
+  position:sticky;top:0;height:100dvh;display:flex;flex-direction:column;gap:10px;
+  padding:18px 14px;border-inline-end:1px solid var(--border);
+  background:linear-gradient(180deg,rgba(10,16,32,.82),rgba(7,11,20,.9));
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);z-index:30;
+}
+[data-theme="light"] .sidebar{background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(238,241,248,.92))}
+.brand{display:flex;align-items:center;gap:11px;padding:6px 8px 14px}
+.brand-logo{
+  width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:1.3rem;
+  background:var(--grad-brand);box-shadow:0 8px 22px rgba(109,94,252,.45);flex:none;
+}
+.brand-name{font-weight:900;font-size:1.02rem;letter-spacing:-.2px;line-height:1.25}
+.brand-name span{display:block;font-size:.68rem;font-weight:600;color:var(--muted)}
+.nav{display:flex;flex-direction:column;gap:4px;overflow-y:auto;flex:1;padding-bottom:8px}
+.nav-label{font-size:.66rem;font-weight:800;color:var(--muted);padding:12px 10px 5px;letter-spacing:.6px;text-transform:uppercase}
+.nav-btn{
+  display:flex;align-items:center;gap:11px;width:100%;padding:10px 12px;border:0;cursor:pointer;
+  background:transparent;color:var(--muted);border-radius:var(--r-sm);font-family:inherit;
+  font-size:.88rem;font-weight:700;text-align:start;transition:all .18s;position:relative;
+}
+.nav-btn .ico{width:22px;text-align:center;font-size:1.05rem;flex:none}
+.nav-btn:hover{background:var(--surface-3);color:var(--text)}
+.nav-btn.active{background:linear-gradient(90deg,rgba(109,94,252,.22),rgba(109,94,252,0));color:var(--text-strong)}
+.nav-btn.active::before{
+  content:"";position:absolute;inset-inline-start:0;top:20%;bottom:20%;width:3px;border-radius:3px;background:var(--grad-brand);
+}
+.nav-btn .pill{margin-inline-start:auto;background:var(--brand);color:#fff;font-size:.62rem;font-weight:800;padding:1px 7px;border-radius:var(--r-full)}
+.side-foot{display:flex;flex-direction:column;gap:8px;padding-top:10px;border-top:1px solid var(--border)}
+
+.main{display:flex;flex-direction:column;min-width:0;min-height:100dvh}
+
+/* ============ الشريط العلوي ============ */
+.topbar{
+  position:sticky;top:0;z-index:25;display:flex;align-items:center;gap:10px;
+  padding:10px 16px;padding-top:max(10px,env(safe-area-inset-top));
+  background:color-mix(in srgb,var(--bg) 78%,transparent);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.topbar .spacer{flex:1}
+.icon-btn{
+  width:38px;height:38px;border-radius:11px;border:1px solid var(--border);background:var(--surface-2);
+  color:var(--text);display:grid;place-items:center;cursor:pointer;font-size:1rem;transition:all .18s;flex:none;
+}
+.icon-btn:hover{background:var(--surface-3);border-color:var(--border-strong);transform:translateY(-1px)}
+.icon-btn:active{transform:scale(.94)}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:var(--r-full);
+  border:1px solid var(--border);background:var(--surface-2);font-size:.78rem;font-weight:700;
+  cursor:pointer;transition:all .18s;max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.chip:hover{border-color:var(--border-strong);background:var(--surface-3)}
+.chip .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(34,197,94,.2)}
+.chip .dot.off{background:var(--muted);box-shadow:none}
+.chip.model{border-color:rgba(109,94,252,.45);background:linear-gradient(135deg,rgba(109,94,252,.18),rgba(168,85,247,.12))}
+.kbd{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;padding:2px 6px;border-radius:6px;
+  border:1px solid var(--border-strong);background:var(--surface-3);color:var(--muted);
+}
+.user-chip{display:flex;align-items:center;gap:8px;padding:5px 12px 5px 6px;border-radius:var(--r-full);border:1px solid var(--border);background:var(--surface-2)}
+.user-avatar{width:28px;height:28px;border-radius:50%;background:var(--grad-brand);display:grid;place-items:center;font-size:.78rem;font-weight:900;color:#fff;overflow:hidden}
+.user-avatar img{width:100%;height:100%;object-fit:cover}
+
+/* ============ المحتوى ============ */
+.content{flex:1;padding:18px;max-width:1400px;width:100%;margin:0 auto}
+.view{display:none;animation:fade .35s ease}
+.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.view-head{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.view-head h2{font-size:1.32rem;font-weight:900;letter-spacing:-.3px}
+.view-head p{font-size:.84rem;color:var(--muted);font-weight:500}
+.view-head .spacer{flex:1}
+
+/* ============ البطاقات ============ */
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:16px;box-shadow:var(--sh-1);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  display:flex;flex-direction:column;gap:13px;
+}
+.card-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.card-head h3{font-size:1rem;font-weight:800;display:flex;align-items:center;gap:8px}
+.card-head .spacer{flex:1}
+.grid{display:grid;gap:14px}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.badge{font-size:.68rem;font-weight:800;padding:3px 9px;border-radius:var(--r-full);background:rgba(109,94,252,.18);color:#b4aaff;border:1px solid rgba(109,94,252,.3);white-space:nowrap}
+.badge.ok{background:rgba(34,197,94,.15);color:#6ee7a0;border-color:rgba(34,197,94,.3)}
+.badge.warn{background:rgba(245,158,11,.15);color:#fcd34d;border-color:rgba(245,158,11,.3)}
+.badge.danger{background:rgba(239,68,68,.15);color:#fca5a5;border-color:rgba(239,68,68,.3)}
+.badge.info{background:rgba(56,189,248,.15);color:#7dd3fc;border-color:rgba(56,189,248,.3)}
+.badge.mute{background:var(--surface-3);color:var(--muted);border-color:var(--border)}
+
+/* ============ الحقول ============ */
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.label{font-size:.79rem;font-weight:700;color:var(--muted);display:flex;align-items:center;gap:6px}
+.label .hint{margin-inline-start:auto;font-size:.7rem;font-weight:600;color:var(--muted);opacity:.8}
+input[type=text],input[type=number],input[type=search],select,textarea{
+  width:100%;background:var(--surface-2);color:var(--text);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:11px 13px;font-family:inherit;font-size:.87rem;transition:all .18s;
+}
+[data-theme="light"] input[type=text],[data-theme="light"] input[type=number],[data-theme="light"] input[type=search],[data-theme="light"] select,[data-theme="light"] textarea{background:#fff}
+textarea{resize:vertical;min-height:86px;line-height:1.7}
+input:focus,select:focus,textarea:focus{border-color:var(--brand);box-shadow:var(--ring);outline:none}
+select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%2393a1bd' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat;background-position:left 12px center;padding-inline-end:32px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:5px;background:var(--surface-3);border:1px solid var(--border);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--grad-brand);cursor:pointer;border:2px solid #fff;box-shadow:var(--sh-1)}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#6d5efc;cursor:pointer;border:2px solid #fff}
+.switch-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 13px;border-radius:var(--r-sm);background:var(--surface-2);border:1px solid var(--border);font-size:.83rem;font-weight:600}
+.switch{position:relative;width:44px;height:25px;flex:none}
+.switch input{opacity:0;width:0;height:0;position:absolute}
+.switch .track{position:absolute;inset:0;background:var(--surface-3);border:1px solid var(--border-strong);border-radius:var(--r-full);cursor:pointer;transition:.22s}
+.switch .track::after{content:"";position:absolute;top:2px;inset-inline-start:2px;width:19px;height:19px;border-radius:50%;background:var(--muted);transition:.22s}
+.switch input:checked + .track{background:linear-gradient(135deg,#6d5efc,#a855f7);border-color:transparent}
+.switch input:checked + .track::after{transform:translateX(19px);background:#fff}
+html[dir=rtl] .switch input:checked + .track::after{transform:translateX(-19px)}
+
+/* ============ الأزرار ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border-radius:var(--r-sm);
+  font-family:inherit;font-size:.85rem;font-weight:800;cursor:pointer;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--text);transition:all .18s;text-decoration:none;white-space:nowrap;
+}
+.btn:hover{background:var(--surface-3);border-color:var(--border-strong);transform:translateY(-1px)}
+.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-primary{background:var(--grad-brand);color:#fff;border-color:transparent;box-shadow:0 8px 24px rgba(109,94,252,.35)}
+.btn-primary:hover{box-shadow:0 12px 30px rgba(109,94,252,.5);background:var(--grad-brand)}
+.btn-cyan{background:var(--grad-cyan);color:#fff;border-color:transparent;box-shadow:0 8px 24px rgba(6,182,212,.3)}
+.btn-ok{background:var(--grad-ok);color:#fff;border-color:transparent}
+.btn-danger{background:rgba(239,68,68,.16);color:#fca5a5;border-color:rgba(239,68,68,.35)}
+.btn-sm{padding:6px 11px;font-size:.76rem}
+.btn-lg{padding:14px 22px;font-size:.95rem}
+.btn-block{width:100%}
+.btn-ghost{background:transparent}
+.seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-sm);padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:.79rem;font-weight:800;padding:7px 13px;border-radius:9px;cursor:pointer;transition:.16s}
+.seg button.active{background:var(--grad-brand);color:#fff;box-shadow:var(--sh-1)}
+.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.row.tight{gap:6px}
+.row.end{justify-content:flex-end}
+
+/* ============ إشعارات ============ */
+#toasts{position:fixed;inset-block-start:14px;inset-inline-end:14px;z-index:200;display:flex;flex-direction:column;gap:9px;max-width:min(92vw,380px)}
+.toast{
+  background:var(--surface);border:1px solid var(--border-strong);border-radius:var(--r);padding:11px 14px;
+  box-shadow:var(--sh-2);font-size:.84rem;font-weight:600;display:flex;gap:10px;align-items:flex-start;
+  animation:toastIn .3s cubic-bezier(.2,.9,.3,1.2);backdrop-filter:blur(14px);
+}
+.toast.ok{border-inline-start:3px solid var(--ok)}
+.toast.err{border-inline-start:3px solid var(--danger)}
+.toast.warn{border-inline-start:3px solid var(--warn)}
+.toast.info{border-inline-start:3px solid var(--info)}
+.toast .x{margin-inline-start:auto;cursor:pointer;color:var(--muted);font-weight:900}
+@keyframes toastIn{from{opacity:0;transform:translateX(-20px) scale(.96)}to{opacity:1;transform:none}}
+
+/* ============ مؤشرات ============ */
+.spinner{width:34px;height:34px;border-radius:50%;border:3px solid rgba(109,94,252,.2);border-top-color:var(--brand);animation:spin .8s linear infinite}
+.spinner.sm{width:18px;height:18px;border-width:2px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.progress{height:7px;border-radius:7px;background:var(--surface-3);overflow:hidden;border:1px solid var(--border)}
+.progress i{display:block;height:100%;width:0;background:var(--grad-brand);border-radius:7px;transition:width .4s ease}
+.skeleton{background:linear-gradient(90deg,var(--surface-2) 25%,var(--surface-3) 50%,var(--surface-2) 75%);background-size:200% 100%;animation:shimmer 1.3s infinite;border-radius:var(--r-sm)}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.empty{display:flex;flex-direction:column;align-items:center;gap:10px;padding:38px 18px;text-align:center;color:var(--muted);border:1px dashed var(--border-strong);border-radius:var(--r-lg);background:var(--surface-2)}
+.empty .em-ico{font-size:2.3rem;opacity:.6}
+.empty p{font-size:.86rem;max-width:420px}
+
+/* ============ نافذة منبثقة ============ */
+.modal-backdrop{
+  position:fixed;inset:0;z-index:150;background:rgba(3,6,14,.72);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;padding:16px;animation:fade .2s ease;
+}
+.modal{
+  width:min(720px,100%);max-height:min(84dvh,760px);background:var(--bg-2);border:1px solid var(--border-strong);
+  border-radius:var(--r-lg);box-shadow:var(--sh-3);display:flex;flex-direction:column;overflow:hidden;
+}
+[data-theme="light"] .modal{background:#fff}
+.modal-head{display:flex;align-items:center;gap:10px;padding:13px 15px;border-bottom:1px solid var(--border)}
+.modal-head h3{font-size:.96rem;font-weight:800;flex:1}
+.modal-search{padding:11px 15px;border-bottom:1px solid var(--border);display:flex;gap:9px;align-items:center}
+.modal-body{flex:1;overflow-y:auto;padding:8px}
+.modal-foot{padding:10px 15px;border-top:1px solid var(--border);display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.model-item{
+  display:flex;align-items:center;gap:11px;padding:9px 11px;border-radius:var(--r-sm);cursor:pointer;
+  border:1px solid transparent;transition:.14s;
+}
+.model-item:hover,.model-item.sel{background:var(--surface-2);border-color:var(--border)}
+.model-item.sel{background:linear-gradient(90deg,rgba(109,94,252,.2),transparent);border-color:rgba(109,94,252,.45)}
+.mi-ico{width:34px;height:34px;border-radius:10px;background:var(--surface-3);display:grid;place-items:center;font-size:1rem;flex:none;border:1px solid var(--border)}
+.mi-body{flex:1;min-width:0}
+.mi-title{font-size:.86rem;font-weight:800;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.mi-sub{font-size:.71rem;color:var(--muted);font-weight:600;font-family:'JetBrains Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:ltr;text-align:left}
+.mi-meta{font-size:.68rem;color:var(--muted);display:flex;gap:7px;flex-wrap:wrap;flex:none}
+
+/* ============ معرض الصور المصغرة ============ */
+.lightbox{position:fixed;inset:0;z-index:220;background:rgba(3,6,14,.94);display:flex;align-items:center;justify-content:center;padding:18px;flex-direction:column;gap:12px;animation:fade .2s}
+.lightbox img,.lightbox video{max-width:100%;max-height:78dvh;border-radius:var(--r);box-shadow:var(--sh-3)}
+.lightbox .lb-bar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:center}
+
+
+
+/* ============ المحادثة ============ */
+.chat-layout{display:grid;grid-template-columns:1fr 280px;gap:14px;align-items:start}
+.chat-wrap{display:flex;flex-direction:column;height:calc(100dvh - 150px);min-height:520px}
+.chat-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chat-scroll{flex:1;overflow-y:auto;padding:6px 4px;display:flex;flex-direction:column;gap:14px;scroll-behavior:smooth}
+.msg{display:flex;gap:11px;max-width:100%;animation:msgIn .3s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.msg.user{flex-direction:row-reverse}
+.msg-avatar{
+  width:34px;height:34px;border-radius:11px;flex:none;display:grid;place-items:center;font-size:.95rem;
+  background:var(--surface-2);border:1px solid var(--border);
+}
+.msg.user .msg-avatar{background:var(--grad-cyan)}
+.msg.ai .msg-avatar{background:var(--grad-brand)}
+.msg-body{min-width:0;max-width:min(86%,780px);display:flex;flex-direction:column;gap:7px}
+.msg.user .msg-body{align-items:flex-end}
+.bubble{
+  padding:12px 15px;border-radius:var(--r);font-size:.9rem;line-height:1.85;white-space:pre-wrap;word-wrap:break-word;
+  background:var(--surface-2);border:1px solid var(--border);box-shadow:var(--sh-1);
+}
+.msg.user .bubble{background:var(--grad-cyan);color:#fff;border-color:transparent;border-end-end-radius:5px}
+.msg.ai .bubble{border-end-start-radius:5px}
+.bubble p{margin:0 0 .7em}
+.bubble p:last-child{margin-bottom:0}
+.bubble h1,.bubble h2,.bubble h3,.bubble h4{margin:.7em 0 .4em;line-height:1.4;font-weight:800}
+.bubble ul,.bubble ol{margin:.5em 0 .8em;padding-inline-start:1.4em}
+.bubble li{margin:.25em 0}
+.bubble a{color:var(--accent);text-decoration:underline}
+.bubble code{font-family:'JetBrains Mono',monospace;font-size:.83em;background:var(--code-bg);padding:2px 6px;border-radius:6px;border:1px solid var(--border);direction:ltr;display:inline-block}
+.bubble pre{background:var(--code-bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:13px;overflow-x:auto;margin:.6em 0;direction:ltr;text-align:left}
+.bubble pre code{background:none;border:0;padding:0;font-size:.8rem;line-height:1.6}
+.bubble blockquote{margin:.6em 0;padding:.5em 1em;border-inline-start:3px solid var(--brand);background:var(--surface-3);border-radius:0 var(--r-xs) var(--r-xs) 0;color:var(--muted)}
+.bubble table{width:100%;border-collapse:collapse;margin:.7em 0;font-size:.84rem}
+.bubble th,.bubble td{border:1px solid var(--border);padding:7px 10px;text-align:start}
+.bubble th{background:var(--surface-3);font-weight:800}
+.bubble hr{border:0;border-top:1px solid var(--border);margin:1em 0}
+.msg-meta{display:flex;align-items:center;gap:7px;font-size:.68rem;color:var(--muted);font-weight:700;flex-wrap:wrap}
+.msg-acts{display:flex;gap:5px;opacity:.5;transition:opacity .18s}
+.msg:hover .msg-acts{opacity:1}
+.msg-att{display:flex;gap:7px;flex-wrap:wrap}
+.msg-att img{width:110px;height:110px;object-fit:cover;border-radius:var(--r-sm);border:1px solid var(--border)}
+.chat-composer{display:flex;gap:9px;align-items:flex-end;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:9px;box-shadow:var(--sh-1)}
+.chat-composer textarea{
+  border:0;background:transparent;min-height:46px;max-height:170px;padding:10px 12px;resize:none;font-size:.9rem;
+}
+.chat-composer textarea:focus{box-shadow:none;border:0}
+.chat-composer:focus-within{border-color:var(--brand);box-shadow:var(--ring)}
+.composer-tools{display:flex;align-items:center;gap:7px;margin-inline-start:auto}
+.typing{display:inline-flex;gap:4px;align-items:center}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:bounce 1.3s infinite}
+.typing i:nth-child(2){animation-delay:.18s}
+.typing i:nth-child(3){animation-delay:.36s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-5px);opacity:1}}
+.side-panel{display:flex;flex-direction:column;gap:12px}
+.side-panel .card{padding:13px;gap:11px}
+.mini-label{font-size:.72rem;font-weight:800;color:var(--muted);display:flex;align-items:center;gap:6px}
+
+/* ============ بطاقات الوسائط ============ */
+.media-box{
+  border:1px solid var(--border);border-radius:var(--r-lg);background:var(--bg-2);overflow:hidden;
+  display:flex;flex-direction:column;min-height:200px;position:relative;
+  transition:border-color .2s,box-shadow .2s,transform .2s;
+}
+.media-box:hover{border-color:var(--border-strong);box-shadow:var(--sh-2)}
+.media-box::after{
+  content:"";position:absolute;inset-block-start:0;inset-inline:0;height:2px;
+  background:var(--grad-brand);opacity:0;transition:opacity .2s;pointer-events:none;
+}
+.media-box:hover::after{opacity:.9}
+[data-theme="light"] .media-box{background:#fff}
+.media-box .m-stage{flex:1;display:grid;place-items:center;padding:12px;min-height:200px;position:relative;overflow:hidden}
+.media-box img,.media-box video{max-width:100%;max-height:420px;border-radius:var(--r-sm);display:block;box-shadow:var(--sh-2)}
+.media-box .m-stage img{transition:transform .35s cubic-bezier(.2,.8,.3,1)}
+.media-box:hover .m-stage img{transform:scale(1.015)}
+.media-box .m-bar{padding:10px 12px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--surface-2)}
+.media-box .m-cap{padding:10px 12px 0;font-size:.79rem;color:var(--muted);font-weight:600;line-height:1.6;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.media-box video{background:#000}
+
+/* بطاقة المشغّل الصوتي */
+.audio-player-card{
+  display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:var(--r);
+  background:linear-gradient(135deg,rgba(109,94,252,.16),rgba(34,211,238,.1));
+  border:1px solid var(--border);min-width:min(340px,86vw);flex-wrap:wrap;
+}
+.audio-player-card .wave{flex:none}
+.audio-player-card audio{flex:1;min-width:170px;height:36px;filter:invert(.92) hue-rotate(180deg) saturate(.4) brightness(1.35)}
+[data-theme="light"] .audio-player-card audio{filter:none}
+.audio-player-card .btn{flex:none}
+
+/* شريط أدوات الوسائط العائم */
+.media-tools{
+  position:absolute;inset-block-start:8px;inset-inline-end:8px;display:flex;gap:6px;
+  opacity:0;transform:translateY(-4px);transition:all .2s;z-index:2;
+}
+.media-box:hover .media-tools{opacity:1;transform:none}
+.media-tools .btn{
+  width:32px;height:32px;padding:0;border-radius:10px;background:rgba(3,6,14,.72);
+  color:#fff;border-color:rgba(255,255,255,.16);backdrop-filter:blur(8px);font-size:.82rem;
+}
+.media-tools .btn:hover{background:rgba(3,6,14,.9);transform:translateY(-1px)}
+
+.wave{display:flex;align-items:center;gap:4px;height:30px}
+.wave i{width:4px;height:10px;background:var(--brand-2);border-radius:4px;animation:wave 1s infinite ease-in-out}
+.wave i:nth-child(2){animation-delay:.1s;height:20px}
+.wave i:nth-child(3){animation-delay:.2s;height:28px}
+.wave i:nth-child(4){animation-delay:.3s;height:16px}
+.wave i:nth-child(5){animation-delay:.4s;height:24px}
+@keyframes wave{0%,100%{transform:scaleY(.55)}50%{transform:scaleY(1.15)}}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+
+/* ============-scenes (الفيديو الطويل) ============ */
+.scene{
+  border:1px solid var(--border);border-radius:var(--r);background:var(--surface-2);padding:12px;
+  display:flex;flex-direction:column;gap:9px;transition:.2s;
+}
+.scene.done{border-color:rgba(34,197,94,.4)}
+.scene.failed{border-color:rgba(239,68,68,.4)}
+.scene.running{border-color:rgba(109,94,252,.55);box-shadow:0 0 0 3px rgba(109,94,252,.12)}
+.scene-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.scene-no{width:26px;height:26px;border-radius:9px;background:var(--grad-brand);color:#fff;display:grid;place-items:center;font-size:.76rem;font-weight:900;flex:none}
+.scene textarea{min-height:64px;font-size:.83rem}
+.scene .row{gap:6px}
+.scene-video{width:100%;border-radius:var(--r-sm);border:1px solid var(--border);display:block}
+.scene-stage{position:relative;border-radius:var(--r-sm);overflow:hidden;background:#000;border:1px solid var(--border)}
+.scene-stage .scene-video{border:0;border-radius:0}
+.scene-poster{width:100%;display:block}
+.scene-audio{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--r-sm);background:var(--surface-3);border:1px solid var(--border);flex-wrap:wrap}
+.scene-audio audio{flex:1;min-width:150px;height:34px}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.stat{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-sm);padding:10px 12px}
+.stat .s-val{font-size:1.15rem;font-weight:900;font-family:'JetBrains Mono',monospace}
+.stat .s-lbl{font-size:.7rem;color:var(--muted);font-weight:700}
+
+/* ============ المعرض ============ */
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.gal-item{
+  border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--surface-2);
+  display:flex;flex-direction:column;cursor:pointer;transition:.2s;position:relative;
+}
+.gal-item:hover{transform:translateY(-3px);border-color:var(--border-strong);box-shadow:var(--sh-2)}
+.gal-thumb{height:120px;display:grid;place-items:center;background:var(--bg-2);overflow:hidden;position:relative}
+.gal-thumb img{width:100%;height:100%;object-fit:cover}
+.gal-thumb video{width:100%;height:100%;object-fit:cover}
+.gal-thumb .ph{font-size:1.9rem;opacity:.55}
+.gal-item .g-meta{padding:8px 10px;font-size:.71rem;color:var(--muted);font-weight:600;display:flex;flex-direction:column;gap:2px}
+.gal-item .g-type{position:absolute;top:7px;inset-inline-start:7px}
+.gal-item .g-del{position:absolute;top:7px;inset-inline-end:7px;width:26px;height:26px;border-radius:8px;border:0;background:rgba(3,6,14,.7);color:#fca5a5;cursor:pointer;display:grid;place-items:center;font-size:.78rem;opacity:0;transition:.2s}
+.gal-item:hover .g-del{opacity:1}
+
+/* ============ لوحة الأوامر ============ */
+.palette{width:min(600px,100%)}
+.palette-input{width:100%;border:0;background:transparent;padding:14px 16px;font-size:1rem;font-family:inherit;color:var(--text)}
+.palette-input:focus{outline:none;box-shadow:none}
+.pal-list{max-height:52dvh;overflow-y:auto;padding:7px}
+.pal-item{display:flex;align-items:center;gap:11px;padding:9px 11px;border-radius:var(--r-sm);cursor:pointer;font-size:.87rem;font-weight:700}
+.pal-item:hover,.pal-item.sel{background:var(--surface-2)}
+.pal-item .k{margin-inline-start:auto}
+
+/* ============ جدول ============ */
+.tbl{width:100%;border-collapse:collapse;font-size:.83rem}
+.tbl th,.tbl td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:start}
+.tbl th{font-size:.74rem;color:var(--muted);font-weight:800}
+
+/* ============ الجوال / الشاشات الصغيرة ============ */
+.mobile-nav{display:none}
+@media (max-width:1100px){
+  .chat-layout{grid-template-columns:1fr}
+  .side-panel{display:none}
+}
+@media (max-width:860px){
+  .app{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .content{padding:12px 12px calc(var(--nav-h) + 22px)}
+  .mobile-nav{
+    display:flex;position:fixed;inset-inline:0;bottom:0;z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--border);
+    padding:7px 5px calc(7px + env(safe-area-inset-bottom));justify-content:space-around;overflow-x:auto;
+  }
+  .m-nav-btn{
+    display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:0;color:var(--muted);
+    font-family:inherit;font-size:.62rem;font-weight:800;padding:5px 9px;border-radius:12px;cursor:pointer;flex:none;position:relative;
+  }
+  .m-nav-btn .ic{font-size:1.18rem;transition:transform .2s}
+  .m-nav-btn.active{color:var(--text-strong);background:var(--surface-2)}
+  .m-nav-btn.active .ic{transform:translateY(-2px) scale(1.08)}
+  .m-nav-btn .pill{position:absolute;top:1px;inset-inline-end:5px;background:var(--brand);color:#fff;font-size:.56rem;padding:0 5px;border-radius:8px;font-weight:900}
+  .view-head h2{font-size:1.12rem}
+  .msg-body{max-width:92%}
+  .toast{font-size:.8rem}
+}
+@media (max-width:480px){
+  .result-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .gal-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+  .btn{padding:9px 13px;font-size:.82rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+/* ============ مساعدات ============ */
+.mt{margin-top:12px}.mb{margin-bottom:12px}
+.muted{color:var(--muted)}.small{font-size:.76rem}.tiny{font-size:.68rem}
+.mono{font-family:'JetBrains Mono',monospace;direction:ltr;display:inline-block}
+.center{text-align:center}.nowrap{white-space:nowrap}
+.hide{display:none!important}
+.ltr{direction:ltr;text-align:left}
+.flex1{flex:1;min-width:0}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.divider{height:1px;background:var(--border);margin:2px 0}
+.note{
+  display:flex;gap:10px;align-items:flex-start;padding:11px 13px;border-radius:var(--r-sm);
+  background:rgba(56,189,248,.09);border:1px solid rgba(56,189,248,.26);font-size:.81rem;color:#bae6fd;
+}
+.note.warn{background:rgba(245,158,11,.09);border-color:rgba(245,158,11,.26);color:#fde68a}
+.note.danger{background:rgba(239,68,68,.09);border-color:rgba(239,68,68,.26);color:#fecaca}
+.note b{font-weight:800}
+.bulk{background:var(--grad-brand);color:#fff;border:0;border-radius:var(--r-full);padding:2px 9px;font-size:.68rem;font-weight:900}
+
+
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- ==================== الشريط الجانبي ==================== -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo">✦</div>
+      <div class="brand-name">Puter AI Studio<span>استوديو الذكاء الاحترافي</span></div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-label">الإبداع</div>
+      <button class="nav-btn active" data-view="chat"><span class="ico">💬</span><span>المحادثة</span></button>
+      <button class="nav-btn" data-view="image"><span class="ico">🎨</span><span>الصور</span></button>
+      <button class="nav-btn" data-view="video"><span class="ico">🎬</span><span>الفيديو</span></button>
+      <button class="nav-btn" data-view="longvideo"><span class="ico">⏳</span><span>فيديو طويل</span><span class="pill" id="navScenes" style="display:none">0</span></button>
+      <button class="nav-btn" data-view="audio"><span class="ico">🔊</span><span>الصوتيات</span></button>
+
+      <div class="nav-label">الأدوات</div>
+      <button class="nav-btn" data-view="vision"><span class="ico">👁️</span><span>تحليل وصوت</span></button>
+      <button class="nav-btn" data-view="gallery"><span class="ico">🗂️</span><span>المعرض</span><span class="pill" id="navGallery" style="display:none">0</span></button>
+      <button class="nav-btn" data-view="settings"><span class="ico">⚙️</span><span>الإعدادات</span></button>
+    </nav>
+
+    <div class="side-foot">
+      <button class="btn btn-ghost btn-sm" id="btnPaletteSide">⌘ لوحة الأوامر <span class="kbd">Ctrl K</span></button>
+      <button class="btn btn-sm btn-block" id="authBtn">🔑 تسجيل الدخول</button>
+    </div>
+  </aside>
+
+  <!-- ==================== المحتوى ==================== -->
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn" id="btnMenu" title="القائمة">☰</button>
+      <div class="brand" style="padding:0">
+        <div class="brand-logo" style="width:34px;height:34px;font-size:1rem;border-radius:11px">✦</div>
+        <div class="brand-name" style="font-size:.9rem">Puter AI Studio<span id="viewTitle">المحادثة الذكية</span></div>
+      </div>
+      <div class="spacer"></div>
+      <button class="chip model" id="topModelChip" title="اختر النموذج">⚡ <span id="topModelName">جارِ التحميل…</span></button>
+      <button class="chip" id="usageChip" title="استهلاكك الحالي">📊 <span>الاستهلاك</span></button>
+      <button class="icon-btn" id="btnTheme" title="تبديل المظهر">🌙</button>
+      <button class="icon-btn" id="btnPalette" title="لوحة الأوامر (Ctrl+K)">⌘</button>
+    </header>
+
+    <div class="content">
+
+      <!-- ============ 1) المحادثة ============ -->
+      <section class="view active" id="view-chat">
+        <div class="view-head">
+          <div>
+            <h2>💬 المحادثة الذكية</h2>
+            <p>بث مباشر للردود · دعم Markdown والأكواد · تحليل الصور · حفظ السياق</p>
+          </div>
+          <div class="spacer"></div>
+          <div class="row tight">
+            <button class="btn btn-sm" id="chatExport">⬇️ تصدير MD</button>
+            <button class="btn btn-sm btn-danger" id="chatClear">🗑️ محادثة جديدة</button>
+          </div>
+        </div>
+
+        <div class="chat-layout">
+          <div class="card chat-wrap" style="gap:11px">
+            <div class="chat-toolbar">
+              <button class="chip model" id="chatModelChip">🧠 <span id="chatModelName">اختر النموذج</span></button>
+              <button class="btn btn-sm" id="chatAttach" title="إرفاق صورة">🖼️ إرفاق صورة</button>
+              <input type="file" id="chatFile" accept="image/*" hidden>
+              <div class="spacer"></div>
+              <span class="badge mute" id="chatTokens">0 رسالة</span>
+            </div>
+
+            <div class="chat-scroll" id="chatScroll">
+              <div class="msg ai">
+                <div class="msg-avatar">🤖</div>
+                <div class="msg-body">
+                  <div class="bubble" id="welcomeBubble">مرحباً بك في استوديو الذكاء الاصطناعي الاحترافي ✨
+اختر أي نموذج من القائمة أعلاه (أو اضغط <b>Ctrl+K</b> للبحث السريع)، وابدأ المحادثة. يمكنك إرفاق صورة، وتصدير المحادثة، والاستمرار في أي وقت.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-composer">
+              <textarea id="chatInput" placeholder="اكتب رسالتك هنا… (Enter للإرسال · Shift+Enter لسطر جديد)"></textarea>
+              <div class="composer-tools">
+                <button class="btn btn-sm" id="chatStop" style="display:none">⏹</button>
+                <button class="btn btn-primary" id="chatSend">إرسال ➤</button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="side-panel">
+            <div class="card">
+              <div class="mini-label">⚙️ إعدادات التوليد</div>
+              <div class="field">
+                <label class="label">رسالة النظام (System)</label>
+                <textarea id="sysPrompt" rows="3" placeholder="مثال: أنت مساعد عربي متخصص في البرمجة…"></textarea>
+              </div>
+              <div class="field">
+                <label class="label">درجة الإبداع (Temperature) <span class="hint" id="tempVal">0.7</span></label>
+                <input type="range" id="tempSlider" min="0" max="2" step="0.1" value="0.7">
+              </div>
+              <div class="field">
+                <label class="label">أقصى طول للرد (Max tokens)</label>
+                <input type="number" id="maxTokens" placeholder="تلقائي" min="64" step="64">
+              </div>
+              <div class="switch-row"><span>🧠 وضع التفكير العميق</span><span class="switch"><input type="checkbox" id="thinkMode"><span class="track"></span></span></div>
+            </div>
+            <div class="card">
+              <div class="mini-label">📎 المرفقات</div>
+              <div id="chatAttachBox" class="msg-att"></div>
+              <div class="tiny muted">الصور تُرسل كنص + بيانات صورة داخل الرسالة.</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============ 2) الصور ============ -->
+      <section class="view" id="view-image">
+        <div class="view-head">
+          <div>
+            <h2>🎨 استوديو الصور</h2>
+            <p>توليد صور عالية الجودة · نِسَب متعددة · صورة إلى صورة · دفعات</p>
+          </div>
+          <div class="spacer"></div>
+          <button class="chip model" id="imgModelChip">🎨 <span id="imgModelName">اختر نموذج الصور</span></button>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>⚙️ إعدادات التوليد</h3><span class="spacer"></span><span class="badge" id="imgProviderBadge">—</span></div>
+            <div class="field">
+              <label class="label">وصف الصورة (Prompt)</label>
+              <textarea id="imgPrompt" rows="4" placeholder="مثال: majestic Arabian horse galloping on golden sand dunes at sunset, cinematic lighting, ultra detailed, 8k"></textarea>
+            </div>
+            <div class="field">
+              <label class="label">النسبة / الأبعاد</label>
+              <select id="imgSize">
+                <option value="1024x1024">مربع 1:1 — 1024×1024</option>
+                <option value="1280x720">عريض 16:9 — 1280×720</option>
+                <option value="720x1280">طولي 9:16 — 720×1280</option>
+                <option value="1024x1536">بورتريه 2:3 — 1024×1536</option>
+                <option value="1536x1024">لاندسكيب 3:2 — 1536×1024</option>
+                <option value="1920x1080">Full HD — 1920×1080</option>
+                <option value="512x512">صغير سريع — 512×512</option>
+              </select>
+            </div>
+            <div class="row">
+              <div class="field" style="flex:1;min-width:150px">
+                <label class="label">عدد الصور</label>
+                <input type="number" id="imgCount" value="1" min="1" max="8">
+              </div>
+              <div class="field" style="flex:1;min-width:150px">
+                <label class="label">الجودة</label>
+                <select id="imgQuality">
+                  <option value="auto">auto</option>
+                  <option value="high">high</option>
+                  <option value="medium">medium</option>
+                  <option value="low">low</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">صورة مرجعية (اختياري — صورة إلى صورة)</label>
+              <input type="file" id="imgRef" accept="image/*">
+            </div>
+            <div class="switch-row"><span>⚡ وضع التجربة (لا يستهلك رصيداً)</span><span class="switch"><input type="checkbox" id="imgTest"><span class="track"></span></span></div>
+            <button class="btn btn-primary btn-lg btn-block" id="imgRun"><span>✨</span> توليد الصور</button>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>🖼️ النتائج</h3><span class="spacer"></span><span class="badge mute" id="imgCountBadge">0</span></div>
+            <div class="result-grid" id="imgResults">
+              <div class="empty" style="grid-column:1/-1"><div class="em-ico">🎨</div><p>ستظهر الصور المولّدة هنا. اختر النموذج، اكتب الوصف، ثم اضغط «توليد».</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============ 3) الفيديو ============ -->
+      <section class="view" id="view-video">
+        <div class="view-head">
+          <div>
+            <h2>🎬 استوديو الفيديو</h2>
+            <p>توليد مقاطع سينمائية · صورة إلى فيديو · تحكّم بالمدة والمقاس والصوت</p>
+          </div>
+          <div class="spacer"></div>
+          <button class="chip model" id="vidModelChip">🎥 <span id="vidModelName">اختر نموذج الفيديو</span></button>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>⚙️ إعدادات المقطع</h3><span class="spacer"></span><span class="badge" id="vidProviderBadge">—</span></div>
+            <div class="field">
+              <label class="label">وصف المشهد (Prompt)</label>
+              <textarea id="vidPrompt" rows="4" placeholder="مثال: cinematic aerial drone shot over a futuristic neon city at night in the rain, 4k, slow motion"></textarea>
+            </div>
+            <div class="row">
+              <div class="field" style="flex:1;min-width:140px">
+                <label class="label">المدة (ثانية)</label>
+                <input type="number" id="vidSeconds" value="5" min="1" max="30">
+                <span class="tiny muted" id="vidSecHint">—</span>
+              </div>
+              <div class="field" style="flex:1;min-width:140px">
+                <label class="label">المقاس</label>
+                <select id="vidSize"></select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">تجنّب (Negative prompt)</label>
+              <input type="text" id="vidNeg" placeholder="blur, distortion, low quality…">
+            </div>
+            <div class="field">
+              <label class="label">صورة البداية (اختياري)</label>
+              <input type="file" id="vidRef" accept="image/*">
+            </div>
+            <div class="switch-row"><span>🔊 توليد موسيقى تصويرية</span><span class="switch"><input type="checkbox" id="vidAudio" checked><span class="track"></span></span></div>
+            <div class="switch-row"><span>⚡ وضع التجربة (لا يستهلك رصيداً)</span><span class="switch"><input type="checkbox" id="vidTest"><span class="track"></span></span></div>
+            <button class="btn btn-primary btn-lg btn-block" id="vidRun"><span>🎥</span> إنشاء المقطع</button>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>🎞️ المعاينة</h3><span class="spacer"></span><span class="badge mute" id="vidTimeBadge">—</span></div>
+            <div id="vidResult">
+              <div class="empty"><div class="em-ico">🎞️</div><p>سيظهر المقطع هنا بجودة كاملة مع أزرار التشغيل والتحميل.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 4) الفيديو الطويل ============ -->
+      <section class="view" id="view-longvideo">
+        <div class="view-head">
+          <div>
+            <h2>⏳ استوديو الفيديو الطويل</h2>
+            <p>فيديو بالساعات: تُقسَّم الفكرة إلى لقطات → تُولَّد → تُدمج في ملف واحد</p>
+          </div>
+          <div class="spacer"></div>
+          <button class="btn btn-sm" id="lvReset">↺ إعادة ضبط</button>
+        </div>
+
+        <div class="note mb">
+          <span>💡</span>
+          <div><b>كيف يعمل؟</b> لا يولّد النموذج الواحد ساعات في طلب واحد؛ لذلك يقسّم الاستوديو الفكرة إلى لقطات قصيرة (5–30 ثانية لكل لقطة)، يولّد كل لقطة على حدة، ثم يدمجها تلقائياً داخل المتصفح عبر ffmpeg.wasm في ملف MP4 واحد.</div>
+        </div>
+
+        <div class="stat-row mb" id="lvEstimateRow">
+          <div class="stat"><div class="s-val" id="lvEstScenes">—</div><div class="s-lbl">عدد اللقطات</div></div>
+          <div class="stat"><div class="s-val" id="lvEstDur">—</div><div class="s-lbl">المدة المتوقّعة</div></div>
+          <div class="stat"><div class="s-val" id="lvEstSize">—</div><div class="s-lbl">مقاس الإطار</div></div>
+          <div class="stat"><div class="s-val" id="lvEstReq">—</div><div class="s-lbl">طلبات متوقّعة</div></div>
+        </div>
+        <div class="tiny muted mb" id="lvEstNote"></div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>1️⃣ الفكرة والنص</h3></div>
+            <div class="field">
+              <label class="label">موضوع الفيديو</label>
+              <input type="text" id="lvTopic" placeholder="مثال: وثائقي قصير عن تاريخ مدينة قرطاج">
+            </div>
+            <div class="field">
+              <label class="label">النص / السيناريو (اختياري — يُستخدم كمرجع)</label>
+              <textarea id="lvScript" rows="6" placeholder="اكتب السيناريو كاملاً، أو اتركه فارغاً ليولّده النموذج…"></textarea>
+            </div>
+            <div class="row">
+              <div class="field" style="flex:1;min-width:130px">
+                <label class="label">عدد اللقطات</label>
+                <input type="number" id="lvSceneCount" value="6" min="1" max="600">
+              </div>
+              <div class="field" style="flex:1;min-width:130px">
+                <label class="label">ثانية/لقطة</label>
+                <input type="number" id="lvClipSeconds" value="5" min="1" max="30">
+              </div>
+            </div>
+            <button class="btn btn-cyan btn-block" id="lvPlan">🧠 توليد خطة اللقطات</button>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>2️⃣ إعدادات الإنتاج</h3></div>
+            <div class="field">
+              <label class="label">نموذج الفيديو</label>
+              <button class="chip model" id="lvModelChip" style="max-width:100%;width:100%">🎥 <span id="lvModelName">—</span></button>
+            </div>
+            <div class="field">
+              <label class="label">المقاس</label>
+              <select id="lvSize"></select>
+            </div>
+            <div class="switch-row"><span>🔊 موسيقى تصويرية لكل لقطة</span><span class="switch"><input type="checkbox" id="lvClipAudio" checked><span class="track"></span></span></div>
+            <div class="switch-row"><span>🗣️ تعليق صوتي عربي (TTS)</span><span class="switch"><input type="checkbox" id="lvNarration"><span class="track"></span></span></div>
+            <div class="field" id="lvVoiceField" style="display:none">
+              <label class="label">صوت التعليق</label>
+              <button class="chip model" id="lvVoiceChip" style="max-width:100%;width:100%">🔊 <span id="lvVoiceName">—</span></button>
+            </div>
+            <div class="switch-row"><span>🖼️ صورة مصغّرة لكل لقطة</span><span class="switch"><input type="checkbox" id="lvPoster"><span class="track"></span></span></div>
+            <div class="switch-row"><span>⚡ وضع التجربة (لا يستهلك رصيداً)</span><span class="switch"><input type="checkbox" id="lvTest"><span class="track"></span></span></div>
+            <button class="btn btn-primary btn-lg btn-block" id="lvRun">▶️ إنتاج كل اللقطات</button>
+          </div>
+        </div>
+
+        <div class="card mt">
+          <div class="card-head">
+            <h3>3️⃣ اللقطات والإنتاج</h3><span class="spacer"></span>
+            <span class="badge mute" id="lvStat">0 / 0</span>
+            <button class="btn btn-sm" id="lvAddScene">➕ لقطة</button>
+            <button class="btn btn-sm" id="lvMerge" disabled>🧩 دمج في ملف واحد</button>
+            <button class="btn btn-sm" id="lvZip" disabled>📦 تحميل حزمة ZIP</button>
+          </div>
+          <div class="progress" id="lvProgressWrap" style="display:none"><i id="lvProgress"></i></div>
+          <div class="grid" id="lvScenes" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+            <div class="empty" style="grid-column:1/-1"><div class="em-ico">🎞️</div><p>اضغط «توليد خطة اللقطات» لإنشاء خطة عمل، ثم «إنتاج كل اللقطات» لتحويلها إلى مشاهد حقيقية.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 5) الصوتيات ============ -->
+      <section class="view" id="view-audio">
+        <div class="view-head">
+          <div>
+            <h2>🔊 استوديو الصوتيات</h2>
+            <p>تعليق صوتي احترافي · أصوات رجال/نساء/أطفال · عربي وإنجليزي · دفعات</p>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>⚙️ محرك الصوت</h3><span class="spacer"></span><span class="badge" id="ttsProviderBadge">—</span></div>
+            <div class="row">
+              <div class="field" style="flex:1;min-width:150px">
+                <label class="label">المزوّد</label>
+                <select id="ttsProvider">
+                  <option value="aws">☁️ Amazon Polly</option>
+                  <option value="openai">🧠 OpenAI TTS</option>
+                  <option value="elevenlabs">✨ ElevenLabs</option>
+                  <option value="gemini">🔮 Gemini TTS</option>
+                  <option value="xai">🦊 xAI (Grok)</option>
+                  <option value="speechify">🎙️ Speechify</option>
+                  <option value="kling">🎞️ Kling</option>
+                </select>
+              </div>
+              <div class="field" style="flex:1;min-width:150px">
+                <label class="label">النموذج</label>
+                <select id="ttsModel"></select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">الصوت (اضغط للبحث في كل الأصوات)</label>
+              <button class="chip model" id="ttsVoiceChip" style="max-width:100%;width:100%">🔊 <span id="ttsVoiceName">اختر الصوت</span></button>
+            </div>
+            <div class="row">
+              <div class="field" style="flex:1;min-width:140px">
+                <label class="label">اللغة</label>
+                <select id="ttsLang"></select>
+              </div>
+              <div class="field" style="flex:1;min-width:140px" id="ttsEngineField">
+                <label class="label">المحرّك (Polly)</label>
+                <select id="ttsEngine"></select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">تعليمات النبرة (Tone / Mood)</label>
+              <input type="text" id="ttsInstructions" placeholder="مثال: بصوت طفل صغير متحمس، بإيقاع سريع">
+            </div>
+            <div class="switch-row"><span>🎚️ معالجة النص كـ SSML</span><span class="switch"><input type="checkbox" id="ttsSsml"><span class="track"></span></span></div>
+            <div class="switch-row"><span>📦 تحويل النص إلى دفعات (كل فقرة ملف)</span><span class="switch"><input type="checkbox" id="ttsBatch"><span class="track"></span></span></div>
+            <div class="field">
+              <label class="label">النص المراد نطقه</label>
+              <textarea id="ttsText" rows="5" placeholder="اكتب النص هنا…"></textarea>
+            </div>
+            <button class="btn btn-primary btn-lg btn-block" id="ttsRun">🔊 توليد الصوت</button>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>🎧 التشغيل</h3><span class="spacer"></span><span class="badge mute" id="ttsStat">—</span></div>
+            <div id="ttsResult">
+              <div class="empty"><div class="em-ico">🎧</div><p>سيظهر المشغّل هنا مع الموجات الصوتية وزر التحميل.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 6) تحليل الرؤية والصوت ============ -->
+      <section class="view" id="view-vision">
+        <div class="view-head">
+          <div>
+            <h2>👁️ تحليل الرؤية والصوت</h2>
+            <p>استخراج النص من الصور (OCR) · تفريغ الصوت · تغيير الصوت</p>
+          </div>
+        </div>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-head"><h3>🔍 استخراج النص (OCR)</h3></div>
+            <input type="file" id="ocrFile" accept="image/*">
+            <button class="btn btn-cyan btn-block" id="ocrRun">استخراج النص</button>
+            <div id="ocrOut" class="tiny" style="white-space:pre-wrap"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>🎙️ تفريغ الصوت</h3></div>
+            <button class="btn btn-primary btn-block" id="recBtn">⏺ ابدأ التسجيل</button>
+            <input type="file" id="sttFile" accept="audio/*">
+            <button class="btn btn-cyan btn-block" id="sttRun">📄 تفريغ ملف صوتي</button>
+            <div id="recOut" class="tiny" style="white-space:pre-wrap"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>🎭 تغيير الصوت</h3></div>
+            <input type="file" id="vchgFile" accept="audio/*">
+            <button class="chip model" id="vchgVoiceChip" style="max-width:100%;width:100%">🎭 <span id="vchgVoiceName">اختر الصوت الجديد</span></button>
+            <button class="btn btn-ok btn-block" id="vchgRun">🎬 حوّل الصوت</button>
+            <div id="vchgOut"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 7) المعرض ============ -->
+      <section class="view" id="view-gallery">
+        <div class="view-head">
+          <div>
+            <h2>🗂️ معرض الإبداعات</h2>
+            <p>كل ما تولّدته محفوظاً في متصفحك (IndexedDB) — يُحفظ تلقائياً</p>
+          </div>
+          <div class="spacer"></div>
+          <div class="row tight">
+            <select id="galFilter" style="width:auto">
+              <option value="all">الكل</option>
+              <option value="image">🎨 صور</option>
+              <option value="video">🎬 فيديو</option>
+              <option value="audio">🔊 صوت</option>
+              <option value="text">📝 نصوص</option>
+            </select>
+            <button class="btn btn-sm" id="galSaveFs">☁️ حفظ في Puter</button>
+            <button class="btn btn-sm btn-danger" id="galClear">🗑️ مسح</button>
+          </div>
+        </div>
+        <div class="gal-grid" id="galGrid">
+          <div class="empty" style="grid-column:1/-1"><div class="em-ico">✨</div><p>كل ما تولّده من صور وفيديوهات وملفات صوتية سيظهر هنا تلقائياً.</p></div>
+        </div>
+      </section>
+
+      <!-- ============ 8) الإعدادات ============ -->
+      <section class="view" id="view-settings">
+        <div class="view-head"><div><h2>⚙️ الإعدادات</h2><p>الحساب · المظهر · المزامنة · النسخ الاحتياطي</p></div></div>
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-head"><h3>👤 الحساب والاستهلاك</h3></div>
+            <div id="acctInfo" class="small muted">غير مسجّل الدخول</div>
+            <div class="stat-row" id="usageStats"></div>
+            <button class="btn btn-primary btn-block" id="authBtn2">🔑 تسجيل الدخول إلى Puter</button>
+            <button class="btn btn-block" id="signOutBtn" style="display:none">🚪 تسجيل الخروج</button>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>🎨 المظهر والتطبيق</h3></div>
+            <div class="switch-row"><span>🌙 المظهر الداكن</span><span class="switch"><input type="checkbox" id="setDark" checked><span class="track"></span></span></div>
+            <button class="btn btn-block" id="installBtn" style="display:none">📲 تثبيت كتطبيق على الهاتف</button>
+            <div class="divider"></div>
+            <div class="mini-label">☁️ المزامنة السحابية (Puter KV)</div>
+            <div class="row">
+              <button class="btn btn-sm" id="kvPush">⬆️ حفظ الإعدادات سحابياً</button>
+              <button class="btn btn-sm" id="kvPull">⬇️ استرجاعها</button>
+            </div>
+            <div class="divider"></div>
+            <div class="mini-label">💾 نسخ احتياطي</div>
+            <div class="row">
+              <button class="btn btn-sm" id="exportAll">⬇️ تصدير JSON</button>
+              <button class="btn btn-sm" id="importAll">⬆️ استيراد JSON</button>
+              <input type="file" id="importFile" accept="application/json" hidden>
+              <button class="btn btn-sm btn-danger" id="resetAll">♻️ تصفير</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>⌨️ اختصارات لوحة المفاتيح</h3></div>
+            <table class="tbl">
+              <tr><td>لوحة الأوامر</td><td><span class="kbd">Ctrl</span> + <span class="kbd">K</span></td></tr>
+              <tr><td>إرسال رسالة</td><td><span class="kbd">Enter</span></td></tr>
+              <tr><td>سطر جديد</td><td><span class="kbd">Shift</span> + <span class="kbd">Enter</span></td></tr>
+              <tr><td>إيقاف التوليد</td><td><span class="kbd">Esc</span></td></tr>
+              <tr><td>بحث النماذج</td><td><span class="kbd">Ctrl</span> + <span class="kbd">M</span></td></tr>
+            </table>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>ℹ️ عن المنصة</h3></div>
+            <div class="small muted">
+              <p>هذا التطبيق مبني على <b>Puter.js</b> — يعمل بالكامل من المتصفح بلا خوادم وبلا مفاتيح API. الرسوم تُحتسب على حساب المستخدم (نموذج «المستخدم هو من الدافع»).</p>
+              <p class="mt">للتشغيل من الهاتف: ارفع الملف على <b>puter.com</b> ← <b>Host as Website</b>، ثم افتح الرابط وأضفه للشاشة الرئيسية.</p>
+            </div>
+            <div class="row">
+              <a class="btn btn-sm" href="https://developer.puter.com/ai/" target="_blank" rel="noopener">📚 توثيق الـ API</a>
+              <a class="btn btn-sm" href="https://docs.puter.com/AI/txt2vid/" target="_blank" rel="noopener">🎬 توثيق الفيديو</a>
+              <a class="btn btn-sm" href="https://puter.com" target="_blank" rel="noopener">☁️ Puter</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<!-- ==================== شريط التنقل السفلي (جوال) ==================== -->
+<nav class="mobile-nav">
+  <button class="m-nav-btn active" data-view="chat"><span class="ic">💬</span><span>المحادثة</span></button>
+  <button class="m-nav-btn" data-view="image"><span class="ic">🎨</span><span>الصور</span></button>
+  <button class="m-nav-btn" data-view="video"><span class="ic">🎬</span><span>فيديو</span></button>
+  <button class="m-nav-btn" data-view="longvideo"><span class="ic">⏳</span><span>ساعات</span><span class="pill" id="mNavScenes" style="display:none">0</span></button>
+  <button class="m-nav-btn" data-view="audio"><span class="ic">🔊</span><span>صوت</span></button>
+  <button class="m-nav-btn" data-view="vision"><span class="ic">👁️</span><span>رؤية</span></button>
+  <button class="m-nav-btn" data-view="gallery"><span class="ic">🗂️</span><span>المعرض</span><span class="pill" id="mNavGallery" style="display:none">0</span></button>
+  <button class="m-nav-btn" data-view="settings"><span class="ic">⚙️</span><span>إعدادات</span></button>
+</nav>
+
+<div id="toasts"></div>
+
+
+<!-- ==================== نافذة اختيار النماذج ==================== -->
+<div class="modal-backdrop hide" id="modelModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="mmTitle">اختيار النموذج</h3>
+      <span class="badge mute" id="mmCount">0</span>
+      <div class="spacer"></div>
+      <button class="icon-btn" data-close="modelModal">✕</button>
+    </div>
+    <div class="modal-search">
+      <span>🔎</span>
+      <input type="search" id="mmSearch" placeholder="ابحث باسم النموذج أو المزوّد أو القدرة… (اكتب / للفلترة السريعة)" style="border:0;background:transparent;padding:6px 2px">
+    </div>
+    <div class="row tight" style="padding:8px 15px;border-bottom:1px solid var(--border)" id="mmFilters"></div>
+    <div class="modal-body" id="mmList"></div>
+    <div class="modal-foot">
+      <span class="tiny muted">استخدم ↑ ↓ للتنقل · Enter للاختيار · Esc للإغلاق</span>
+      <div class="spacer"></div>
+      <button class="btn btn-sm" data-close="modelModal">إغلاق</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== لوحة الأوامر ==================== -->
+<div class="modal-backdrop hide" id="paletteModal">
+  <div class="modal palette">
+    <div class="modal-head">
+      <h3>⌘ لوحة الأوامر</h3>
+      <div class="spacer"></div>
+      <button class="icon-btn" data-close="paletteModal">✕</button>
+    </div>
+    <div class="modal-search" style="padding:0">
+      <span>⌘</span>
+      <input type="text" class="palette-input" id="palInput" placeholder="اكتب أمراً أو ابحث…">
+    </div>
+    <div class="pal-list" id="palList"></div>
+    <div class="modal-foot"><span class="tiny muted">تنقّل بالأسهم · Enter للتنفيذ · Esc للإغلاق</span></div>
+  </div>
+</div>
+
+<!-- ==================== عارض الوسائط ==================== -->
+<div class="lightbox hide" id="lightbox">
+  <div id="lbContent"></div>
+  <div class="lb-bar" id="lbBar"></div>
+</div>
+
+<script>
+/* =========================================================================
+   Puter AI Studio Pro — منطق التطبيق
+   واجهة واحدة تجمع: محادثة • صور • فيديو • فيديو طويل • صوتيات • رؤية • معرض
+   ========================================================================= */
+'use strict';
+
+/* ---------------------- أدوات مساعدة ---------------------- */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const el = (tag, attrs = {}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v === null || v === undefined || v === false) continue;
+    if (k === 'class') n.className = v;
+    else if (k === 'html') n.innerHTML = v;
+    else if (k === 'text') n.textContent = v;
+    else if (k.startsWith('on') && typeof v === 'function') n.addEventListener(k.slice(2).toLowerCase(), v);
+    else if (k === 'style' && typeof v === 'object') Object.assign(n.style, v);
+    else n.setAttribute(k, v);
+  }
+  kids.flat().forEach(k => { if (k === null || k === undefined) return; n.appendChild(typeof k === 'string' ? document.createTextNode(k) : k); });
+  return n;
+};
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const nowId = () => Math.random().toString(36).slice(2, 10);
+const fmtBytes = b => b < 1024 ? b + ' B' : b < 1048576 ? (b/1024).toFixed(1) + ' KB' : (b/1048576).toFixed(2) + ' MB';
+const fmtDur = s => { s = Math.round(s||0); const h = Math.floor(s/3600), m = Math.floor((s%3600)/60); return h ? `${h}:${String(m).padStart(2,'0')}:${String(s%60).padStart(2,'0')}` : `${m}:${String(s%60).padStart(2,'0')}`; };
+
+function toast(msg, type = 'info', ms = 3800) {
+  const box = $('#toasts');
+  const icons = { ok:'✅', err:'❌', warn:'⚠️', info:'ℹ️' };
+  const t = el('div', { class: 'toast ' + type },
+    el('span', { text: icons[type] || 'ℹ️' }),
+    el('span', { class: 'flex1', text: msg }),
+    el('span', { class: 'x', text: '✕', onclick: () => t.remove() })
+  );
+  box.appendChild(t);
+  setTimeout(() => { t.style.transition = 'opacity .3s, transform .3s'; t.style.opacity = '0'; t.style.transform = 'translateX(-16px)'; setTimeout(() => t.remove(), 320); }, ms);
+  return t;
+}
+
+function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = el('a', { href: url, download: filename });
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 8000);
+}
+function downloadURL(url, filename) {
+  const a = el('a', { href: url, download: filename, target: '_blank', rel: 'noopener' });
+  document.body.appendChild(a); a.click(); a.remove();
+}
+async function copyText(txt) {
+  try { await navigator.clipboard.writeText(txt); toast('تم النسخ ✓', 'ok', 1600); }
+  catch { toast('تعذّر النسخ — انسخ يدوياً', 'warn'); }
+}
+function loadScript(src) {
+  return new Promise((res, rej) => {
+    if (document.querySelector(`script[data-src="${src}"]`)) return res();
+    const s = el('script', { src, 'data-src': src });
+    s.onload = res; s.onerror = () => rej(new Error('فشل تحميل: ' + src));
+    document.head.appendChild(s);
+  });
+}
+
+/* ---------------------- الحالة العامة ---------------------- */
+const LS_KEY = 'puter_pro_v1';
+const state = {
+  theme: 'dark',
+  signedIn: false,
+  user: null,
+  usage: null,
+  chat: { messages: [], model: '', sys: '', temp: 0.7, maxTokens: null, thinking: false, attachments: [], abort: null },
+  models: { chat: [], providers: [], image: [], ttsEngines: [], ttsVoices: [] },
+  picked: { image: '', video: '', ttsVoice: '', lvVoice: '', vchgVoice: '' },
+  gallery: [],
+  settings: { dark: true, temp: 0.7, sys: '' }
+};
+
+function saveLocal() {
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify({
+      theme: state.theme, picked: state.picked, settings: state.settings,
+      chat: { messages: state.chat.messages.slice(-40), model: state.chat.model },
+      gallery: state.gallery.map(g => ({ id:g.id, type:g.type, title:g.title, prompt:g.prompt, model:g.model, ts:g.ts, size:g.size, mime:g.mime }))
+    }));
+  } catch (e) { /* التخزين ممتلئ */ }
+}
+function loadLocal() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (!raw) return;
+    const d = JSON.parse(raw);
+    state.theme = d.theme || 'dark';
+    state.picked = Object.assign(state.picked, d.picked || {});
+    state.settings = Object.assign(state.settings, d.settings || {});
+    if (d.chat) {
+      state.chat.messages = Array.isArray(d.chat.messages) ? d.chat.messages : [];
+      state.chat.model = d.chat.model || '';
+    }
+    if (Array.isArray(d.gallery)) state.gallery = d.gallery;
+  } catch (e) { /* تجاهل */ }
+}
+
+/* ---------------------- IndexedDB لتخزين الوسائط ---------------------- */
+const DB = (() => {
+  let dbp = null;
+  const open = () => dbp || (dbp = new Promise((res, rej) => {
+    const r = indexedDB.open('puter-pro-media', 1);
+    r.onupgradeneeded = () => { const db = r.result; if (!db.objectStoreNames.contains('assets')) db.createObjectStore('assets', { keyPath: 'id' }); };
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  }));
+  const tx = (mode, fn) => open().then(db => new Promise((res, rej) => {
+    const t = db.transaction('assets', mode);
+    const st = t.objectStore('assets');
+    const out = fn(st);
+    t.oncomplete = () => res(out && out.result !== undefined ? out.result : undefined);
+    t.onerror = () => rej(t.error);
+  }));
+  return {
+    put: (a) => tx('readwrite', st => st.put(a)),
+    get: (id) => tx('readonly', st => st.get(id)),
+    del: (id) => tx('readwrite', st => st.delete(id)),
+    all: () => tx('readonly', st => st.getAll())
+  };
+})();
+
+/* ---------------------- المظهر ---------------------- */
+function applyTheme(dark) {
+  state.theme = dark ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', state.theme);
+  const meta = document.querySelector('meta[name=theme-color]');
+  if (meta) meta.content = dark ? '#070b14' : '#eef1f8';
+  $('#btnTheme').textContent = dark ? '🌙' : '☀️';
+  const sw = $('#setDark'); if (sw) sw.checked = dark;
+}
+
+/* ---------------------- التنقل بين الأقسام ---------------------- */
+const VIEW_TITLES = { chat:'المحادثة الذكية', image:'استوديو الصور', video:'استوديو الفيديو', longvideo:'فيديو طويل بالساعات', audio:'استوديو الصوتيات', vision:'تحليل الرؤية والصوت', gallery:'معرض الإبداعات', settings:'الإعدادات' };
+function go(view) {
+  $$('.view').forEach(v => v.classList.remove('active'));
+  const target = $('#view-' + view);
+  if (target) target.classList.add('active');
+  $$('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+  $$('.m-nav-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+  $('#viewTitle').textContent = VIEW_TITLES[view] || '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  history.replaceState(null, '', '#' + view);
+}
+$$('.nav-btn, .m-nav-btn').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
+
+/* ---------------------- المصادقة والاستهلاك ---------------------- */
+async function refreshAuth() {
+  try {
+    if (window.puter && puter.auth && puter.auth.isSignedIn()) {
+      state.signedIn = true;
+      const u = await puter.auth.getUser();
+      state.user = u;
+      const name = u.username || u.email || 'مستخدم';
+      $('#authBtn').textContent = '👤 ' + name;
+      $('#authBtn2').textContent = '👤 ' + name;
+      $('#signOutBtn').style.display = 'block';
+      $('#acctInfo').innerHTML = `مسجّل الدخول باسم <b>${esc(name)}</b><br><span class="tiny muted">${esc(u.email || '')}</span>`;
+      loadUsage();
+      loadImageModels();
+      syncKvPull(true);
+    } else {
+      state.signedIn = false;
+      $('#authBtn').textContent = '🔑 تسجيل الدخول';
+      $('#acctInfo').textContent = 'غير مسجّل الدخول';
+      $('#signOutBtn').style.display = 'none';
+    }
+  } catch (e) { /* تجاهل */ }
+}
+async function doSignIn() {
+  try {
+    if (!window.puter) return toast('لم يتم تحميل مكتبة Puter.js — تحقّق من الإنترنت', 'err');
+    await puter.auth.signIn();
+    await refreshAuth();
+    toast('تم تسجيل الدخول بنجاح ✓', 'ok');
+  } catch (e) {
+    toast('تعذّر فتح نافذة الدخول. إن كنت تفتح الملف محلياً (file://) ارفعه على puter.com ← Host as Website', 'warn', 7000);
+  }
+}
+async function loadUsage() {
+  try {
+    const u = await puter.auth.getMonthlyUsage();
+    state.usage = u;
+    const txt = u ? (u.usage !== undefined ? u.usage : u.monthlyUsageCount ?? '—') : '—';
+    $('#usageChip').innerHTML = `📊 <span>${esc(String(txt))}</span>`;
+    const allow = u && (u.allowance ?? u.monthlyUsageAllowance ?? u.limit);
+    $('#usageStats').innerHTML = `
+      <div class="stat"><div class="s-val">${esc(String(txt))}</div><div class="s-lbl">الاستهلاك الحالي</div></div>
+      <div class="stat"><div class="s-val">${allow !== undefined ? esc(String(allow)) : '∞'}</div><div class="s-lbl">الحد المسموح</div></div>`;
+  } catch (e) { $('#usageChip').innerHTML = '📊 <span>—</span>'; }
+}
+$('#authBtn').addEventListener('click', doSignIn);
+$('#authBtn2').addEventListener('click', doSignIn);
+$('#signOutBtn').addEventListener('click', async () => { try { await puter.auth.signOut(); await refreshAuth(); toast('تم تسجيل الخروج', 'ok'); } catch (e) {} });
+
+/* ---------------------- الحفظ السحابي (KV) ---------------------- */
+const KV_KEY = 'puter-pro-settings';
+async function kvPush() {
+  if (!state.signedIn) return toast('سجّل الدخول أولاً', 'warn');
+  try {
+    await puter.kv.set(KV_KEY, JSON.stringify({ settings: state.settings, picked: state.picked, chat: state.chat.messages.slice(-40) }));
+    toast('تم الحفظ في Puter KV ✓', 'ok');
+  } catch (e) { toast('فشل الحفظ: ' + (e.message || e), 'err'); }
+}
+async function kvPull(silent) {
+  if (!state.signedIn) return;
+  try {
+    const v = await puter.kv.get(KV_KEY);
+    if (!v) return;
+    const d = typeof v === 'string' ? JSON.parse(v) : v;
+    if (d?.settings) { Object.assign(state.settings, d.settings); applyTheme(state.settings.dark !== false); $('#sysPrompt').value = state.settings.sys || ''; $('#tempSlider').value = state.chat.temp; $('#tempVal').textContent = state.chat.temp; }
+    if (d?.picked) Object.assign(state.picked, d.picked);
+    if (d?.chat && Array.isArray(d.chat) && !state.chat.messages.length) { state.chat.messages = d.chat; renderChat(); }
+    if (!silent) toast('تم استرجاع الإعدادات ✓', 'ok');
+    syncPickerLabels();
+  } catch (e) { if (!silent) toast('تعذّر الاسترجاع', 'err'); }
+}
+$('#kvPush').addEventListener('click', kvPush);
+$('#kvPull').addEventListener('click', () => kvPull(false));
+
+/* ---------------------- الإعدادات العامة ---------------------- */
+$('#btnTheme').addEventListener('click', () => { applyTheme(state.theme !== 'dark'); state.settings.dark = state.theme === 'dark'; saveLocal(); });
+$('#setDark').addEventListener('change', e => { applyTheme(e.target.checked); state.settings.dark = e.target.checked; saveLocal(); });
+$('#sysPrompt').addEventListener('input', e => { state.chat.sys = e.target.value; state.settings.sys = e.target.value; saveLocal(); });
+$('#tempSlider').addEventListener('input', e => { state.chat.temp = parseFloat(e.target.value); $('#tempVal').textContent = e.target.value; state.settings.temp = state.chat.temp; saveLocal(); });
+$('#thinkMode').addEventListener('change', e => { state.chat.thinking = e.target.checked; });
+$('#maxTokens').addEventListener('input', e => { state.chat.maxTokens = e.target.value ? parseInt(e.target.value, 10) : null; });
+
+/* ---------------------- تثبيت التطبيق (PWA) ---------------------- */
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPrompt = e; $('#installBtn').style.display = 'block'; });
+$('#installBtn').addEventListener('click', async () => {
+  if (!deferredPrompt) return toast('التثبيت غير متاح على هذا المتصفح — استخدم «إضافة إلى الشاشة الرئيسية»', 'warn');
+  deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null;
+});
+(function makeManifest() {
+  try {
+    const mf = {
+      name: 'Puter AI Studio Pro', short_name: 'AI Studio', start_url: '.', display: 'standalone',
+      background_color: '#070b14', theme_color: '#070b14', dir: 'rtl', lang: 'ar',
+      icons: [{ src: 'data:image/svg+xml;utf8,' + encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='42' fill='%236d5efc'/><text x='96' y='132' font-size='104' text-anchor='middle' fill='white' font-family='sans-serif'>✦</text></svg>"), sizes: '192x192', type: 'image/svg+xml', purpose: 'any' }]
+    };
+    const link = el('link', { rel: 'manifest', href: URL.createObjectURL(new Blob([JSON.stringify(mf)], { type: 'application/json' })) });
+    document.head.appendChild(link);
+  } catch (e) { /* تجاهل */ }
+})();
+
+/* ---------------------- طلب الإذن للميكروفون (speech2txt) ---------------------- */
+let mediaRecorder = null, recChunks = [], recTimer = null;
+async function toggleRecord() {
+  const btn = $('#recBtn');
+  if (mediaRecorder && mediaRecorder.state === 'recording') {
+    mediaRecorder.stop(); return;
+  }
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    recChunks = [];
+    mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder.ondataavailable = e => recChunks.push(e.data);
+    mediaRecorder.onstop = async () => {
+      stream.getTracks().forEach(t => t.stop());
+      btn.textContent = '⏺ ابدأ التسجيل'; btn.classList.remove('btn-danger');
+      const blob = new Blob(recChunks, { type: 'audio/webm' });
+      $('#recOut').textContent = '⏳ جارٍ التفريغ…';
+      try {
+        const res = await puter.ai.speech2txt(blob);
+        const txt = typeof res === 'string' ? res : (res?.text || res?.message?.content || '');
+        $('#recOut').textContent = txt || '(لم يُكتشف نص)';
+        await addToGallery('audio', 'تفريغ صوتي', txt, { mime:'text/plain', text:true });
+      } catch (e) { $('#recOut').textContent = '⚠️ ' + (e.message || e); }
+    };
+    mediaRecorder.start();
+    btn.textContent = '⏹ إيقاف التسجيل'; btn.classList.add('btn-danger');
+    recTimer = setTimeout(() => mediaRecorder && mediaRecorder.state === 'recording' && mediaRecorder.stop(), 120000);
+  } catch (e) { toast('تعذّر الوصول إلى الميكروفون: ' + (e.message || e), 'err'); }
+}
+$('#recBtn').addEventListener('click', toggleRecord);
+
+
+/* =========================================================================
+   كتالوج النماذج + نافذة البحث عن النماذج
+   ========================================================================= */
+const CHAT_FALLBACK = [
+  { id:'gpt-4o', provider:'openai', name:'GPT-4o' },
+  { id:'gpt-4o-mini', provider:'openai', name:'GPT-4o mini' },
+  { id:'claude-3-5-sonnet', provider:'anthropic', name:'Claude 3.5 Sonnet' },
+  { id:'gemini-2.5-flash', provider:'google', name:'Gemini 2.5 Flash' },
+  { id:'deepseek-chat', provider:'deepseek', name:'DeepSeek V3' },
+  { id:'deepseek-reasoner', provider:'deepseek', name:'DeepSeek R1' },
+  { id:'grok-2', provider:'x-ai', name:'Grok 2' }
+];
+const IMAGE_FALLBACK = [
+  { id:'gpt-image-2', provider:'openai', name:'GPT Image 2' },
+  { id:'gemini-3.1-flash-image', provider:'google', name:'Gemini Flash Image' },
+  { id:'@cf/black-forest-labs/flux-1-schnell', provider:'cloudflare', name:'FLUX.1 Schnell' },
+  { id:'grok-imagine-image', provider:'xai', name:'Grok Imagine' },
+  { id:'black-forest-labs/flux-schnell', provider:'replicate', name:'FLUX Schnell' },
+  { id:'seedream-5-0-lite-260128', provider:'byteplus', name:'Seedream 5 Lite' },
+  { id:'kling-v3', provider:'kling', name:'Kling v3' }
+];
+const TTS_MODELS = {
+  openai: ['gpt-4o-mini-tts','tts-1-hd','tts-1'],
+  elevenlabs: ['eleven_multilingual_v2','eleven_turbo_v2_5','eleven_flash_v2_5'],
+  gemini: ['gemini-2.5-flash-preview-tts','gemini-2.5-pro-preview-tts'],
+  xai: ['grok-2'],
+  speechify: ['speechify-1'],
+  kling: ['kling-v1'],
+  aws: []
+};
+const TTS_PROVIDER_NAMES = { aws:'Amazon Polly', openai:'OpenAI', elevenlabs:'ElevenLabs', gemini:'Google Gemini', xai:'xAI (Grok)', speechify:'Speechify', kling:'Kling' };
+const LANGS = [['ar','🇸🇦 العربية'],['en','🇺🇸 English (US)'],['en-GB','🇬🇧 English (UK)'],['fr','🇫🇷 Français'],['de','🇩🇪 Deutsch'],['es','🇪🇸 Español'],['it','🇮🇹 Italiano'],['tr','🇹🇷 Türkçe'],['ru','🇷🇺 Русский'],['hi','🇮🇳 हिन्दी'],['ja','🇯🇵 日本語'],['ko','🇰🇷 한국어'],['zh','🇨🇳 中文'],['pt','🇧🇷 Português']];
+
+/* نماذج الفيديو — بيانات رسمية من توثيق Puter */
+const VIDEO_MODELS = [
+  { id:'wan-ai/wan2.7-t2v', provider:'togetherai', label:'Wan 2.7 — نص إلى فيديو', secs:[2,15], def:5, sizes:['720P','1080P','1280x720','1280x768','720x1280','768x1280'], audio:true, fps:30, hot:true },
+  { id:'bytedance/seedance-2.5', provider:'togetherai', label:'Seedance 2.5 (حتى 30 ثانية)', secs:[4,30], def:5, sizes:['720p','480p','1080p'], audio:true, fps:24, hot:true },
+  { id:'bytedance/seedance-2.0', provider:'togetherai', label:'Seedance 2.0', secs:[4,15], def:5, sizes:['720p','480p','1080p'], audio:true, fps:24 },
+  { id:'google/veo-3.1', provider:'togetherai', label:'Google Veo 3.1', secs:[4,8], def:5, sizes:[], audio:true, fps:24, hot:true },
+  { id:'google/veo-3.1-lite', provider:'togetherai', label:'Veo 3.1 Lite', secs:[4,8], def:5, sizes:[], audio:true, fps:24 },
+  { id:'minimax/hailuo-02', provider:'togetherai', label:'Hailuo 02 (10 ثوانٍ)', secs:[10,10], def:10, sizes:['1366x768','1920x1080'], audio:false, fps:25 },
+  { id:'minimax/video-01-director', provider:'togetherai', label:'Video-01 Director', secs:[5,5], def:5, sizes:['1366x768'], audio:false, fps:25 },
+  { id:'pixverse/pixverse-v5', provider:'togetherai', label:'PixVerse v5', secs:[5,5], def:5, sizes:['1280x720','720x720','720x1280','960x960'], audio:false, fps:24 },
+  { id:'vidu/vidu-q1', provider:'togetherai', label:'Vidu Q1', secs:[5,5], def:5, sizes:['1920x1080','1080x1080','1080x1920'], audio:false, fps:24 },
+  { id:'bytedance/seedance-1.0-pro', provider:'togetherai', label:'Seedance 1.0 Pro', secs:[5,5], def:5, sizes:['960x960','1248x704'], audio:false, fps:24 },
+  { id:'seedance-2-5', provider:'byteplus', label:'Seedance 2.5 (BytePlus)', secs:[4,30], def:5, sizes:['720p','480p','1080p'], audio:true, fps:24 },
+  { id:'seedance-2-0', provider:'byteplus', label:'Seedance 2.0 (BytePlus)', secs:[4,15], def:5, sizes:['720p','480p','1080p'], audio:true, fps:24 },
+  { id:'seedance-2-0-mini', provider:'byteplus', label:'Seedance 2.0 Mini', secs:[4,15], def:5, sizes:['720p','480p'], audio:true, fps:24 },
+  { id:'kling-3.0-omni', provider:'kling', label:'Kling 3.0 Omni (تعديل فيديو)', secs:[3,15], def:6, sizes:['1280x704'], audio:true, fps:24 },
+  { id:'kling-o1', provider:'kling', label:'Kling O1', secs:[3,10], def:6, sizes:['1280x704'], audio:true, fps:24 },
+  { id:'gemini-omni-1.1-flash', provider:'gemini', label:'Gemini Omni 1.1 Flash', secs:[5,20], def:6, sizes:['1280x704'], audio:true, fps:24 },
+  { id:'black-forest-labs/flux-3', provider:'togetherai', label:'FLUX 3 (تعديل فيديو)', secs:[5,20], def:6, sizes:[], audio:false, fps:24 }
+];
+const getVideoModel = id => VIDEO_MODELS.find(v => v.id === id) || VIDEO_MODELS[0];
+
+/* ---------------------- جلب الكتالوجات ---------------------- */
+async function loadChatModels() {
+  try {
+    const list = await puter.ai.listModels();
+    if (Array.isArray(list) && list.length) {
+      state.models.chat = list.map(m => ({
+        id: m.id || m.name,
+        provider: m.provider || '—',
+        name: m.name || m.id,
+        context: m.context || m.max_tokens || null,
+        aliases: m.aliases || [],
+        cost: m.cost || null
+      }));
+    } else throw new Error('قائمة فارغة');
+  } catch (e) {
+    state.models.chat = CHAT_FALLBACK.slice();
+    toast('تعذّر جلب قائمة النماذج — تم استخدام القائمة المبدئية', 'warn', 5000);
+  }
+  try { const p = await puter.ai.listModelProviders(); if (Array.isArray(p)) state.models.providers = p.map(x => typeof x === 'string' ? x : (x.id || x.name)); } catch (e) {}
+  if (!state.chat.model && state.models.chat.length) state.chat.model = pickDefaultChat(state.models.chat);
+  syncPickerLabels();
+}
+function pickDefaultChat(list) {
+  // نموذج متوازن (سريع ورخيص) كاختيار افتراضي، مع تفضيل الأحدث
+  const rank = ['gpt-5-mini','gpt-5-nano','gemini-3-flash-preview','gemini-3.1-flash-lite','claude-haiku-4-5-20251001','claude-haiku-5-5','deepseek-v4.1-flash','gpt-5.4','gpt-5.2','gpt-5','claude-opus-4-6','gemini-3.1-pro-preview','grok-4.3'];
+  for (const p of rank) {
+    const exact = list.find(m => m.id === p); if (exact) return exact.id;
+    const pref = list.find(m => String(m.id).toLowerCase().startsWith(p)); if (pref) return pref.id;
+  }
+  return list[0]?.id || '';
+}
+async function loadImageModels() {
+  try {
+    if (!state.signedIn) throw new Error('يلزم تسجيل الدخول لاكتشاف نماذج الصور');
+    const r = await puter.drivers.call('puter-image-generation', 'models', {});
+    const list = Array.isArray(r) ? r : (r?.models || []);
+    if (list.length) state.models.image = list.map(m => ({ id: m.id, provider: m.provider || m.driver || '—', name: m.name || m.id }));
+    else throw new Error('فارغ');
+  } catch (e) {
+    state.models.image = IMAGE_FALLBACK.slice();
+  }
+  if (!state.picked.image && state.models.image.length) {
+    const f = state.models.image.find(m => /gpt-image/i.test(m.id)) || state.models.image[0];
+    state.picked.image = f.id;
+  }
+  syncPickerLabels();
+}
+async function loadTtsCatalog() {
+  try {
+    const e = await puter.ai.txt2speech.listEngines();
+    state.models.ttsEngines = (Array.isArray(e) ? e : e?.engines || []).map(x => typeof x === 'string' ? { id:x, name:x } : { id:x.id || x.model || x.name, name:x.name || x.id, provider:x.provider });
+  } catch (err) { state.models.ttsEngines = []; }
+  const prov = $('#ttsProvider').value;
+  try {
+    const v = await puter.ai.txt2speech.listVoices({ provider: prov });
+    const arr = Array.isArray(v) ? v : (v?.voices || []);
+    state.models.ttsVoices = arr.map(x => ({
+      id: x.id || x.name, name: x.name || x.id, provider: x.provider || prov,
+      langs: x.labels?.languages || x.languages || (x.language ? [x.language] : []),
+      lang: x.language || (x.labels?.languages?.[0]) || ''
+    }));
+  } catch (err) {
+    state.models.ttsVoices = FALLBACK_VOICES[prov] ? FALLBACK_VOICES[prov].map(x => ({ id:x[0], name:x[1], provider:prov, langs:[x[2]], lang:x[2] })) : [];
+  }
+  populateTtsModelSelect(); populateTtsEngineSelect(); populateLangSelect();
+}
+const FALLBACK_VOICES = {
+  aws: [['Zayd','زيد (عربي)','ar'],['Zeina','زينة (عربية)','ar'],['Hala','هالة (خليجية)','ar'],['Joanna','Joanna','en-US'],['Matthew','Matthew','en-US'],['Amy','Amy','en-US'],['Aria','Aria','en-US'],['Hans','Hans','zh-CN'],['Olivia','Olivia','en-AU']],
+  openai: [['alloy','Alloy — متوازن','en'],['ash','Ash — عميق','en'],['ballad','Ballad — شاعري','en'],['coral','Coral — نسائي دافئ','en'],['echo','Echo — رجالي هادئ','en'],['fable','Fable — راوي قصص','en'],['onyx','Onyx — رجالي فخم','en'],['nova','Nova — نسائي حيوي','en'],['sage','Sage — ناضج هادئ','en'],['shimmer','Shimmer — ناعم مشرق','en'],['verse','Verse — تعبيري','en']],
+  elevenlabs: [['Rachel','Rachel','en'],['Bella','Bella','en'],['Domi','Domi','en'],['Adam','Adam','en'],['Antoni','Antoni','en'],['Josh','Josh','en'],['Arnold','Arnold','en'],['Sam','Sam','en'],['Gigi','Gigi (طفلة)','en'],['Mimi','Mimi (طفلة)','en']],
+  gemini: [['Puck','Puck','en'],['Kore','Kore','en'],['Charon','Charon','en'],['Fenrir','Fenrir','en'],['Aoede','Aoede','en']],
+  xai: [['Rex','Rex','en'],['Puck','Puck','en'],['Eve','Eve','en'],['Ara','Ara','en']],
+  speechify: [['Ava','Ava','en']],
+  kling: [['default','Kling Default','zh']]
+};
+
+/* ---------------------- نافذة البحث عن النماذج ---------------------- */
+const picker = { kind:null, items:[], filtered:[], sel:0, onPick:null, filter:'all' };
+function openPicker(opts) {
+  picker.kind = opts.kind;
+  picker.onPick = opts.onPick;
+  picker.filter = 'all';
+  $('#mmTitle').textContent = opts.title || 'اختيار النموذج';
+  $('#mmSearch').value = '';
+  const data = {
+    chat: state.models.chat.map(m => ({ id:m.id, title:m.name || m.id, sub:m.id, provider:m.provider, meta:[m.context ? `${(m.context/1000).toFixed(0)}K ctx` : '', m.cost?.input ? `${m.cost.input}c/1M` : ''].filter(Boolean), icon:'💬' })),
+    image: state.models.image.map(m => ({ id:m.id, title:m.name || m.id, sub:m.id, provider:m.provider, meta:[], icon:'🎨' })),
+    video: VIDEO_MODELS.map(m => ({ id:m.id, title:m.label, sub:m.id, provider:m.provider, meta:[`${m.secs[0]}–${m.secs[1]} ث`, m.audio ? 'صوت ✓' : 'بلا صوت', m.hot ? 'مميّز' : ''].filter(Boolean), icon:'🎬' })),
+    voice: state.models.ttsVoices.map(m => ({ id:m.id, title:m.name, sub:m.id, provider:m.provider, meta:(m.langs||[]).slice(0,3).join(' · '), icon:'🔊' })),
+    engine: state.models.ttsEngines.map(m => ({ id:m.id, title:m.name || m.id, sub:m.id, provider:m.provider, meta:[], icon:'⚙️' }))
+  }[opts.kind] || [];
+  picker.items = data;
+  const provs = [...new Set(data.map(d => d.provider).filter(Boolean))].sort();
+  const fbox = $('#mmFilters'); fbox.innerHTML = '';
+  const mk = (label, val, ic) => { const b = el('button', { class:'btn btn-sm' + (val===opts.kind?' btn-primary':''), text: label, onclick: () => { picker.filter = val; renderPicker(); $$('#mmFilters .btn').forEach(x=>x.classList.remove('btn-primary')); b.classList.add('btn-primary'); } }); fbox.appendChild(b); };
+  mk('الكل', 'all');
+  provs.slice(0, 14).forEach(p => mk(p, p));
+  if (opts.kind === 'chat') { mk('🔥 المميزة', 'hot'); }
+  renderPicker();
+  $('#modelModal').classList.remove('hide');
+  setTimeout(() => $('#mmSearch').focus(), 60);
+}
+function renderPicker() {
+  const q = ($('#mmSearch').value || '').toLowerCase().trim();
+  let items = picker.items;
+  if (picker.filter === 'hot') items = items.filter(i => /gpt-4o|claude|gemini|deepseek|grok|qwen|llama|kimi/i.test(i.id));
+  else if (picker.filter !== 'all') items = items.filter(i => i.provider === picker.filter);
+  if (q) items = items.filter(i => (i.title + ' ' + i.sub + ' ' + (i.provider||'') + ' ' + (i.meta||[]).join(' ')).toLowerCase().includes(q));
+  picker.filtered = items; picker.sel = 0;
+  const list = $('#mmList'); list.innerHTML = '';
+  if (!items.length) { list.appendChild(el('div', { class:'empty' }, el('div',{class:'em-ico',text:'🔍'}), el('p',{text:'لا توجد نتائج مطابقة.'}))); return; }
+  $('#mmCount').textContent = items.length + ' نموذج';
+  items.slice(0, 400).forEach((it, i) => {
+    const node = el('div', { class:'model-item' + (i===0?' sel':''), onclick: () => pickModel(it) },
+      el('div', { class:'mi-ico', text: it.icon || '🤖' }),
+      el('div', { class:'mi-body' },
+        el('div', { class:'mi-title' }, el('span', { text: it.title }), it.provider ? el('span', { class:'badge mute', text: it.provider }) : null),
+        el('div', { class:'mi-sub', text: it.sub })
+      ),
+      el('div', { class:'mi-meta' }, (it.meta||[]).map(m => el('span', { class:'badge', text: m })))
+    );
+    node.dataset.idx = i;
+    list.appendChild(node);
+  });
+  if (items.length > 400) list.appendChild(el('div', { class:'tiny muted center', style:'padding:10px', text: `… و${items.length-400} نموذج إضافي (اكتب للبحث)` }));
+}
+function pickModel(item) {
+  closeModal('modelModal');
+  if (picker.onPick) picker.onPick(item);
+}
+$('#mmSearch').addEventListener('input', renderPicker);
+$('#mmList').addEventListener('mousemove', e => {
+  const it = e.target.closest('.model-item'); if (!it) return;
+  $$('#mmList .model-item').forEach(x => x.classList.remove('sel'));
+  it.classList.add('sel');
+});
+document.addEventListener('keydown', e => {
+  if ($('#modelModal').classList.contains('hide')) return;
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    const items = $$('#mmList .model-item'); if (!items.length) return;
+    const cur = items.findIndex(x => x.classList.contains('sel'));
+    let nxt = e.key === 'ArrowDown' ? cur + 1 : cur - 1;
+    if (nxt < 0) nxt = items.length - 1; if (nxt >= items.length) nxt = 0;
+    items.forEach(x => x.classList.remove('sel')); items[nxt].classList.add('sel');
+    items[nxt].scrollIntoView({ block:'nearest' });
+  } else if (e.key === 'Enter') {
+    const sel = $('#mmList .model-item.sel'); if (sel) { e.preventDefault(); sel.click(); }
+  } else if (e.key === 'Escape') closeModal('modelModal');
+});
+function closeModal(id) { const m = $('#' + id); if (m) m.classList.add('hide'); }
+$$('[data-close]').forEach(b => b.addEventListener('click', () => closeModal(b.dataset.close)));
+$$('.modal-backdrop').forEach(bd => bd.addEventListener('mousedown', e => { if (e.target === bd) closeModal(bd.id); }));
+
+/* ---------------------- لوحة الأوامر ---------------------- */
+const PALETTE_ACTIONS = [
+  { icon:'💬', label:'الانتقال إلى المحادثة', act:() => go('chat') },
+  { icon:'🎨', label:'الانتقال إلى استوديو الصور', act:() => go('image') },
+  { icon:'🎬', label:'الانتقال إلى استوديو الفيديو', act:() => go('video') },
+  { icon:'⏳', label:'الانتقال إلى الفيديو الطويل', act:() => go('longvideo') },
+  { icon:'🔊', label:'الانتقال إلى الصوتيات', act:() => go('audio') },
+  { icon:'👁️', label:'الانتقال إلى تحليل الرؤية', act:() => go('vision') },
+  { icon:'🗂️', label:'الانتقال إلى المعرض', act:() => go('gallery') },
+  { icon:'⚙️', label:'الانتقال إلى الإعدادات', act:() => go('settings') },
+  { icon:'🔎', label:'بحث عن نموذج محادثة', act:() => { go('chat'); openPicker({ kind:'chat', title:'نماذج المحادثة', onPick: it => { state.chat.model = it.id; syncPickerLabels(); saveLocal(); } }); } },
+  { icon:'🎨', label:'بحث عن نموذج صور', act:() => { go('image'); openPicker({ kind:'image', title:'نماذج الصور', onPick: it => { state.picked.image = it.id; syncPickerLabels(); saveLocal(); } }); } },
+  { icon:'🎬', label:'بحث عن نموذج فيديو', act:() => { go('video'); openPicker({ kind:'video', title:'نماذج الفيديو', onPick: it => { state.picked.video = it.id; syncPickerLabels(); saveLocal(); } }); } },
+  { icon:'🔊', label:'بحث عن صوت', act:() => { go('audio'); openPicker({ kind:'voice', title:'الأصوات', onPick: it => { state.picked.ttsVoice = it.id; syncPickerLabels(); saveLocal(); } }); } },
+  { icon:'🌙', label:'تبديل المظهر (فاتح/داكن)', act:() => { applyTheme(state.theme !== 'dark'); state.settings.dark = state.theme === 'dark'; saveLocal(); } },
+  { icon:'⬇️', label:'تصدير المحادثة Markdown', act:() => exportChat() },
+  { icon:'🔄', label:'تحديث قائمة النماذج', act:async () => { await loadChatModels(); await loadImageModels(); toast('تم تحديث النماذج ✓','ok'); } }
+];
+let palIdx = 0, palItems = [];
+function openPalette() {
+  palIdx = 0; $('#palInput').value = ''; renderPalette();
+  $('#paletteModal').classList.remove('hide'); setTimeout(() => $('#palInput').focus(), 60);
+}
+function renderPalette() {
+  const q = ($('#palInput').value || '').toLowerCase().trim();
+  palItems = PALETTE_ACTIONS.filter(a => !q || a.label.toLowerCase().includes(q));
+  const list = $('#palList'); list.innerHTML = '';
+  palItems.forEach((a, i) => {
+    const n = el('div', { class:'pal-item' + (i===palIdx?' sel':''), onclick: () => { closeModal('paletteModal'); a.act(); } },
+      el('span', { text:a.icon }), el('span', { text:a.label }), el('span', { class:'k' }));
+    list.appendChild(n);
+  });
+  if (!palItems.length) list.appendChild(el('div', { class:'empty' }, el('p', { text:'لا يوجد أمر مطابق' })));
+}
+$('#palInput').addEventListener('input', renderPalette);
+$('#palInput').addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown') { e.preventDefault(); palIdx = Math.min(palIdx+1, palItems.length-1); renderPalette(); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); palIdx = Math.max(palIdx-1, 0); renderPalette(); }
+  else if (e.key === 'Enter') { e.preventDefault(); const a = palItems[palIdx]; if (a) { closeModal('paletteModal'); a.act(); } }
+  else if (e.key === 'Escape') closeModal('paletteModal');
+});
+$('#btnPalette').addEventListener('click', openPalette);
+$('#btnPaletteSide').addEventListener('click', openPalette);
+
+
+/* =========================================================================
+   المزامنة بين العناصر وحالة النماذج
+   ========================================================================= */
+function syncPickerLabels() {
+  const c = state.chat.model || '—';
+  $('#chatModelName').textContent = c;
+  $('#topModelName').textContent = (VIEW_TITLES[currentView()] === 'استوديو الصور') ? (state.picked.image || '—') : (state.picked.video || '—');
+  $('#imgModelName').textContent = state.picked.image || 'اختر نموذج الصور';
+  $('#vidModelName').textContent = state.picked.video || 'اختر نموذج الفيديو';
+  $('#lvModelName').textContent = state.picked.video || '—';
+  $('#ttsVoiceName').textContent = state.picked.ttsVoice || 'اختر الصوت';
+  $('#lvVoiceName').textContent = state.picked.lvVoice || 'اختر الصوت';
+  $('#vchgVoiceName').textContent = state.picked.vchgVoice || 'اختر الصوت';
+  const vm = getVideoModel(state.picked.video);
+  const vsec = $('#vidSecHint'); if (vsec) vsec.textContent = `المدى: ${vm.secs[0]}–${vm.secs[1]} ثانية`;
+  const vp = $('#vidProviderBadge'); if (vp) vp.textContent = vm.provider;
+  const ip = $('#imgProviderBadge');
+  if (ip) {
+    const im = state.models.image.find(x => x.id === state.picked.image);
+    ip.textContent = im ? (im.provider || '—') : '—';
+  }
+  const lp = $('#lvModelName');
+  populateVideoSizes('#vidSize', vm); populateVideoSizes('#lvSize', vm);
+  if (typeof updateLvEstimate === 'function') updateLvEstimate();
+}
+let _view = 'chat';
+function currentView() { return _view; }
+const _go = go;
+go = function (v) { _view = v; _go(v); syncPickerLabels(); };
+
+function populateVideoSizes(sel, vm) {
+  const node = $(sel); if (!node) return;
+  const cur = node.value;
+  node.innerHTML = '';
+  if (vm.sizes && vm.sizes.length) vm.sizes.forEach(s => node.appendChild(el('option', { value:s, text:s })));
+  else { node.appendChild(el('option', { value:'auto', text:'حجم افتراضي للنموذج' })); node.appendChild(el('option', { value:'1280x720', text:'1280×720' })); node.appendChild(el('option', { value:'720x1280', text:'720×1280' })); }
+  if (cur && [...node.options].some(o => o.value === cur)) node.value = cur;
+}
+
+/* =========================================================================
+   المحادثة
+   ========================================================================= */
+function mdToHTML(text) {
+  try {
+    if (window.marked) {
+      const html = window.marked.parse(String(text || ''));
+      return highlightCode(html);
+    }
+  } catch (e) { console.warn('markdown', e); }
+  return esc(text).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
+}
+/* تلوين الأكواد بعد إخراج Markdown — متوافق مع كل إصدارات marked */
+function highlightCode(html) {
+  if (!window.hljs) return html;
+  try {
+    return String(html).replace(/<pre><code(?: class="language-([\w+#.-]+)")?>([\s\S]*?)<\/code><\/pre>/g, (m, lang, code) => {
+      const text = code.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,'&');
+      let out;
+      try { out = window.hljs.highlight(text, { language: (lang && window.hljs.getLanguage(lang)) ? lang : 'plaintext' }).value; }
+      catch (e) { out = window.hljs.highlightAuto(text).value; }
+      return '<pre><code class="hljs language-' + (lang || 'plaintext') + '">' + out + '</code></pre>';
+    });
+  } catch (e) { return html; }
+}
+function renderChat() {
+  const box = $('#chatScroll');
+  box.innerHTML = '';
+  if (!state.chat.messages.length) {
+    box.appendChild(el('div', { class:'msg ai' },
+      el('div', { class:'msg-avatar', text:'🤖' }),
+      el('div', { class:'msg-body' },
+        el('div', { class:'bubble', html:'مرحباً بك في استوديو الذكاء الاصطناعي الاحترافي ✨<br>اختر أي نموذج من القائمة أعلاه (أو اضغط <b>Ctrl+K</b>)، وابدأ المحادثة. يمكنك إرفاق صورة وتصدير المحادثة.' })
+      )));
+  } else {
+    state.chat.messages.forEach(m => box.appendChild(buildMsgEl(m)));
+  }
+  $('#chatTokens').textContent = state.chat.messages.length + ' رسالة';
+  scrollChat();
+}
+function buildMsgEl(m) {
+  const wrap = el('div', { class:'msg ' + m.role });
+  wrap.appendChild(el('div', { class:'msg-avatar', text: m.role === 'user' ? '👤' : '🤖' }));
+  const body = el('div', { class:'msg-body' });
+  const bub = el('div', { class:'bubble' });
+  if (m.role === 'user') bub.textContent = m.text;
+  else bub.innerHTML = mdToHTML(m.text || '');
+  body.appendChild(bub);
+  if (m.images && m.images.length) {
+    const at = el('div', { class:'msg-att' });
+    m.images.forEach(src => at.appendChild(el('img', { src })));
+    body.appendChild(at);
+  }
+  const meta = el('div', { class:'msg-meta' },
+    el('span', { text: m.role === 'user' ? 'أنت' : (m.model || 'AI') }),
+    m.time ? el('span', { text:'· ' + m.time }) : null);
+  const acts = el('div', { class:'msg-acts' });
+  acts.appendChild(el('button', { class:'btn btn-sm', text:'📋', title:'نسخ', onclick: () => copyText(m.text || '') }));
+  if (m.role === 'ai') acts.appendChild(el('button', { class:'btn btn-sm', text:'🔁', title:'إعادة توليد', onclick: () => regenerate(m) }));
+  meta.appendChild(acts);
+  body.appendChild(meta);
+  wrap.appendChild(body);
+  return wrap;
+}
+function scrollChat() { const s = $('#chatScroll'); requestAnimationFrame(() => s.scrollTop = s.scrollHeight); }
+function timeNow() { return new Date().toLocaleTimeString('ar-SA', { hour:'2-digit', minute:'2-digit' }); }
+
+async function sendChat() {
+  const inp = $('#chatInput');
+  const text = inp.value.trim();
+  if (!text && !state.chat.attachments.length) return;
+  if (!state.chat.model) { toast('اختر نموذجاً أولاً', 'warn'); return; }
+
+  const imgs = state.chat.attachments.slice();
+  state.chat.attachments = []; renderAttachments();
+
+  const userMsg = { role:'user', text: text || '(صورة)', images: imgs.map(a => a.dataUrl), time: timeNow() };
+  state.chat.messages.push(userMsg);
+  inp.value = '';
+  renderChat();
+
+  const aiMsg = { role:'ai', text:'', model: state.chat.model, time: timeNow() };
+  state.chat.messages.push(aiMsg);
+  const node = buildMsgEl(aiMsg);
+  $('#chatScroll').appendChild(node);
+  const bubble = node.querySelector('.bubble');
+  bubble.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';
+  scrollChat();
+
+  $('#chatSend').style.display = 'none'; $('#chatStop').style.display = 'inline-flex';
+  const ctrl = new AbortController(); state.chat.abort = ctrl;
+  let full = '';
+  try {
+    const msgs = buildApiMessages();
+    const opts = { model: state.chat.model, stream: true, signal: ctrl.signal };
+    if (state.chat.temp !== 0.7 && state.chat.temp !== undefined) opts.temperature = state.chat.temp;
+    if (state.chat.maxTokens) opts.max_tokens = state.chat.maxTokens;
+    if (state.chat.thinking) { opts.reasoning_effort = 'high'; opts.thinking = { display:true }; }
+    const resp = await puter.ai.chat(msgs, opts);
+    bubble.innerHTML = '';
+    for await (const part of resp) {
+      const t = part?.text ?? (part?.message?.content ?? '') ?? (part?.choices?.[0]?.delta?.content ?? '') ?? '';
+      if (typeof t === 'string' && t) {
+        full += t;
+        bubble.innerHTML = mdToHTML(full);
+        scrollChat();
+      }
+    }
+    if (!full) {
+      const r = await Promise.resolve(resp);
+      const msg = r?.message?.content ?? r?.content ?? '';
+      full = typeof msg === 'string' ? msg : (Array.isArray(msg) ? msg.map(b => b.text || '').join('') : '');
+      bubble.innerHTML = mdToHTML(full || '⚠️ لم يصل رد.');
+    }
+  } catch (err) {
+    if (err?.name === 'AbortError') { full += '\n\n_(تم الإيقاف)_'; }
+    else { bubble.innerHTML = `<span style="color:#fca5a5">⚠️ ${esc(err?.message || 'حدث خطأ')}</span>`; }
+  } finally {
+    aiMsg.text = full || '⚠️ لم يصل رد.';
+    $('#chatSend').style.display = 'inline-flex'; $('#chatStop').style.display = 'none';
+    state.chat.abort = null;
+    renderChat(); saveLocal();
+  }
+}
+function buildApiMessages() {
+  const out = [];
+  if (state.chat.sys.trim()) out.push({ role:'system', content: state.chat.sys.trim() });
+  state.chat.messages.filter(m => m.role === 'user' || m.role === 'assistant').forEach(m => {
+    if (m.role === 'user' && m.images && m.images.length) {
+      const content = [{ type:'text', text: m.text }];
+      m.images.forEach(u => content.push({ type:'image_url', image_url:{ url:u } }));
+      out.push({ role:'user', content });
+    } else {
+      out.push({ role: m.role, content: m.text });
+    }
+  });
+  return out;
+}
+async function regenerate(m) {
+  const i = state.chat.messages.indexOf(m);
+  if (i < 0) return;
+  state.chat.messages = state.chat.messages.slice(0, i);
+  renderChat(); await sendChat();
+}
+$('#chatSend').addEventListener('click', sendChat);
+$('#chatStop').addEventListener('click', () => { if (state.chat.abort) state.chat.abort.abort(); });
+$('#chatClear').addEventListener('click', () => { state.chat.messages = []; renderChat(); saveLocal(); toast('تم بدء محادثة جديدة', 'ok', 1800); });
+$('#chatExport').addEventListener('click', exportChat);
+function exportChat() {
+  const md = state.chat.messages.map(m => `**${m.role === 'user' ? 'أنت' : (m.model || 'AI')}** (${m.time || ''})\n\n${m.text || ''}\n`).join('\n---\n\n');
+  downloadBlob(new Blob([md], { type:'text/markdown;charset=utf-8' }), `puter-chat-${new Date().toISOString().slice(0,10)}.md`);
+  toast('تم تصدير المحادثة ✓', 'ok');
+}
+$('#chatInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
+});
+$('#chatAttach').addEventListener('click', () => $('#chatFile').click());
+$('#chatFile').addEventListener('change', async e => {
+  const f = e.target.files?.[0]; if (!f) return;
+  const dataUrl = await new Promise(res => { const r = new FileReader(); r.onload = () => res(r.result); r.readAsDataURL(f); });
+  state.chat.attachments.push({ name: f.name, dataUrl });
+  renderAttachments(); e.target.value = '';
+});
+function renderAttachments() {
+  const box = $('#chatAttachBox'); box.innerHTML = '';
+  state.chat.attachments.forEach((a, i) => {
+    box.appendChild(el('div', { style:'position:relative' },
+      el('img', { src:a.dataUrl, style:'width:64px;height:64px;object-fit:cover;border-radius:9px;border:1px solid var(--border)' }),
+      el('button', { class:'btn btn-sm btn-danger', style:'position:absolute;top:-6px;inset-inline-end:-6px;padding:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center', text:'✕', onclick: () => { state.chat.attachments.splice(i,1); renderAttachments(); } })
+    ));
+  });
+}
+$('#chatModelChip').addEventListener('click', () => openPicker({ kind:'chat', title:'نماذج المحادثة (500+ نموذج)', onPick: it => { state.chat.model = it.id; syncPickerLabels(); saveLocal(); toast('تم اختيار: ' + it.id, 'ok', 1800); } }));
+$('#topModelChip').addEventListener('click', () => {
+  const v = currentView();
+  if (v === 'image') $('#imgModelChip').click();
+  else if (v === 'video' || v === 'longvideo') $('#vidModelChip').click();
+  else if (v === 'audio') $('#ttsVoiceChip').click();
+  else $('#chatModelChip').click();
+});
+
+/* =========================================================================
+   توليد الصور
+   ========================================================================= */
+$('#imgModelChip').addEventListener('click', () => openPicker({ kind:'image', title:'نماذج توليد الصور', onPick: it => { state.picked.image = it.id; syncPickerLabels(); saveLocal(); toast('النموذج: ' + it.id, 'ok', 1600); } }));
+
+async function fileToBlobOrDataUrl(input) {
+  const f = input.files?.[0]; if (!f) return null;
+  const dataUrl = await new Promise(res => { const r = new FileReader(); r.onload = () => res(r.result); r.readAsDataURL(f); });
+  return { blob: f, dataUrl, name: f.name };
+}
+$('#imgRun').addEventListener('click', async () => {
+  const prompt = $('#imgPrompt').value.trim();
+  if (!prompt) return toast('اكتب وصف الصورة أولاً', 'warn');
+  const model = state.picked.image; if (!model) return toast('اختر نموذج الصور', 'warn');
+  const count = clamp(parseInt($('#imgCount').value || '1', 10), 1, 8);
+  const testMode = $('#imgTest').checked;
+  const size = $('#imgSize').value;
+  const quality = $('#imgQuality').value;
+  const ref = await fileToBlobOrDataUrl($('#imgRef'));
+  const btn = $('#imgRun'); btn.disabled = true;
+  const grid = $('#imgResults');
+  grid.innerHTML = '';
+  let done = 0;
+  const cnt = $('#imgCountBadge'); if (cnt) cnt.textContent = '0';
+  for (let i = 0; i < count; i++) {
+    const cell = el('div', { class:'media-box' },
+      el('div', { class:'m-stage' }, el('div', { class:'spinner' })));
+    grid.appendChild(cell);
+    try {
+      const opts = { model, test_mode: testMode };
+      if (/gpt-image|gemini/i.test(model)) {
+        const [w,h] = size.split('x').map(Number);
+        opts.ratio = { w, h };
+        if (quality !== 'auto') opts.quality = quality;
+      } else {
+        opts.size = size;
+      }
+      if (ref) { opts.input_reference = ref.blob; opts.images = [ref.blob]; }
+      let img;
+      try { img = await puter.ai.txt2img(prompt, opts); }
+      catch (e1) { img = await puter.ai.txt2img(prompt, { model, test_mode: testMode }); }
+      const src = img.src || (img.querySelector?.('source')?.src) || '';
+      const srcEl = el('img', { src, alt: prompt, loading: 'lazy' });
+      const tools = el('div', { class:'media-tools' },
+        el('button', { class:'btn', text:'🔍', title:'تكبير', onclick: () => openLightbox({ type:'image', src, title:prompt }) }),
+        el('button', { class:'btn', text:'📥', title:'تحميل', onclick: () => downloadURL(src, `ai-image-${Date.now()}.png`) })
+      );
+      cell.querySelector('.m-stage').innerHTML = ''; cell.querySelector('.m-stage').appendChild(srcEl);
+      cell.querySelector('.m-stage').appendChild(tools);
+      cell.appendChild(el('div', { class:'m-cap', text: prompt }));
+      cell.appendChild(el('div', { class:'m-bar' },
+        el('span', { class:'badge', text: model }),
+        el('span', { class:'badge mute', text: size }),
+        el('div', { class:'spacer' }),
+        el('button', { class:'btn btn-sm', text:'📋', title:'نسخ الوصف', onclick: () => copyText(prompt) }),
+        el('button', { class:'btn btn-sm', text:'📥 تحميل', onclick: () => downloadURL(src, `ai-image-${Date.now()}.png`) }),
+        el('button', { class:'btn btn-sm', text:'🔍', title:'تكبير', onclick: () => openLightbox({ type:'image', src, title: prompt }) })
+      ));
+      await addToGallery('image', prompt, src, { model, blob: src });
+      done++;
+      if (cnt) cnt.textContent = String(done);
+    } catch (e) {
+      cell.querySelector('.m-stage').innerHTML = `<div class="center small" style="color:#fca5a5">⚠️ ${esc(e.message || e)}</div>`;
+    }
+  }
+  btn.disabled = false;
+  toast('تم التوليد ✓', 'ok');
+});
+
+/* =========================================================================
+   توليد الفيديو (مقطع واحد)
+   ========================================================================= */
+$('#vidModelChip').addEventListener('click', () => openPicker({ kind:'video', title:'نماذج الفيديو', onPick: it => { state.picked.video = it.id; syncPickerLabels(); saveLocal(); toast('النموذج: ' + it.id, 'ok', 1600); } }));
+
+async function generateClip(prompt, modelId, opts = {}) {
+  const vm = getVideoModel(modelId);
+  const o = { model: modelId };
+  if (opts.seconds) o.seconds = opts.seconds;
+  if (opts.size && opts.size !== 'auto') o.size = opts.size;
+  if (opts.negative) o.negative_prompt = opts.negative;
+  if (opts.audio !== undefined) o.generate_audio = opts.audio;
+  if (opts.testMode) o.test_mode = true;
+  if (opts.reference) o.input_reference = opts.reference;
+  if (opts.seed !== undefined) o.seed = opts.seed;
+  const v = await puter.ai.txt2vid(prompt, o);
+  const src = v.src || v.currentSrc || v.querySelector?.('source')?.src || '';
+  // بعض البيئات (Workers/Node) تُعيد كائناً بسيطاً بدل عنصر <video> — نوحّد الشكل هنا
+  let node = v;
+  if (!node || node.tagName !== 'VIDEO') {
+    node = document.createElement('video');
+    node.src = src;
+    node.controls = true;
+    node.preload = 'metadata';
+    node.playsInline = true;
+  } else {
+    node.controls = true;
+    node.preload = node.preload || 'metadata';
+  }
+  return { el: node, src: src || node.src, model: modelId, meta: vm };
+}
+$('#vidRun').addEventListener('click', async () => {
+  const prompt = $('#vidPrompt').value.trim();
+  if (!prompt) return toast('اكتب وصف المشهد أولاً', 'warn');
+  const model = state.picked.video || VIDEO_MODELS[0].id;
+  const vm = getVideoModel(model);
+  const secs = clamp(parseInt($('#vidSeconds').value || String(vm.def), 10), 1, 30);
+  const btn = $('#vidRun'); btn.disabled = true;
+  const out = $('#vidResult');
+  out.innerHTML = `<div class="empty"><div class="spinner"></div><p>جاري إنشاء المقطع عبر <b>${esc(model)}</b>… (قد يستغرق من 20 ثانية إلى دقيقتين)</p></div>`;
+  try {
+    const ref = await fileToBlobOrDataUrl($('#vidRef'));
+    const res = await generateClip(prompt, model, {
+      seconds: secs, size: $('#vidSize').value, negative: $('#vidNeg').value.trim(),
+      audio: $('#vidAudio').checked, testMode: $('#vidTest').checked, reference: ref?.blob
+    });
+    out.innerHTML = '';
+    const v = res.el; v.controls = true; v.autoplay = true; v.loop = true; v.playsInline = true;
+    v.setAttribute('playsinline','');
+    const vtools = el('div', { class:'media-tools' },
+      el('button', { class:'btn', text:'🔍', title:'تكبير', onclick: () => openLightbox({ type:'video', src: res.src, title: prompt }) }),
+      el('button', { class:'btn', text:'📥', title:'تحميل', onclick: () => downloadURL(res.src, `ai-video-${Date.now()}.mp4`) })
+    );
+    out.appendChild(el('div', { class:'media-box' },
+      el('div', { class:'m-stage' }, v, vtools),
+      el('div', { class:'m-cap', text: prompt }),
+      el('div', { class:'m-bar' },
+        el('span', { class:'badge', text: model }),
+        el('span', { class:'badge mute', text: secs + ' ثانية' }),
+        el('span', { class:'badge mute', text: $('#vidSize').value }),
+        el('div', { class:'spacer' }),
+        el('button', { class:'btn btn-sm', text:'📋', title:'نسخ الوصف', onclick: () => copyText(prompt) }),
+        el('button', { class:'btn btn-sm', text:'📥 تحميل', onclick: () => downloadURL(res.src, `ai-video-${Date.now()}.mp4`) }),
+        el('button', { class:'btn btn-sm', text:'🔍', onclick: () => openLightbox({ type:'video', src: res.src, title: prompt }) })
+      )));
+    $('#vidTimeBadge').textContent = fmtDur(secs);
+    await addToGallery('video', prompt, res.src, { model });
+    toast('تم إنشاء المقطع ✓', 'ok');
+  } catch (e) {
+    out.innerHTML = `<div class="empty"><div class="em-ico">⚠️</div><p>${esc(e.message || e)}</p></div>`;
+    toast('فشل إنشاء المقطع', 'err');
+  } finally { btn.disabled = false; }
+});
+
+/* =========================================================================
+   المعرض + العارض
+   ========================================================================= */
+async function addToGallery(type, prompt, src, extra = {}) {
+  const item = { id: nowId(), type, title: (extra.title || prompt || '').slice(0, 120), prompt, model: extra.model || '', ts: Date.now(), mime: extra.mime || (type==='image'?'image/png':type==='video'?'video/mp4':'audio/mpeg'), size: extra.size || 0, text: !!extra.text, src: extra.text ? '' : src };
+  state.gallery.unshift(item);
+  if (!extra.text) { try { await DB.put({ id: item.id, blob: src }); } catch (e) {} }
+  saveLocal(); renderGallery();
+  updateGalleryBadges();
+}
+function updateGalleryBadges() {
+  const n = state.gallery.length;
+  ['#navGallery','#mNavGallery'].forEach(sel => { const e = $(sel); if (!e) return; e.style.display = n ? 'block' : 'none'; e.textContent = n; });
+}
+async function renderGallery() {
+  const grid = $('#galGrid'); const filter = $('#galFilter').value;
+  const items = state.gallery.filter(g => filter === 'all' || g.type === filter);
+  grid.innerHTML = '';
+  if (!items.length) { grid.appendChild(el('div', { class:'empty', style:'grid-column:1/-1' }, el('div',{class:'em-ico',text:'✨'}), el('p',{text:'لا توجد عناصر بعد.'}))); updateGalleryBadges(); return; }
+  for (const g of items) {
+    const thumb = el('div', { class:'gal-thumb' });
+    if (g.type === 'image') thumb.appendChild(el('img', { src:g.src, alt:g.title }));
+    else if (g.type === 'video') thumb.appendChild(el('video', { src:g.src, muted:true, playsinline:true }));
+    else if (g.type === 'audio') thumb.appendChild(el('div', { class:'ph', text:'🔊' }));
+    else thumb.appendChild(el('div', { class:'ph', text:'📝' }));
+    const icons = { image:'🎨', video:'🎬', audio:'🔊', text:'📝' };
+    const node = el('div', { class:'gal-item', onclick: () => openLightbox(g) },
+      thumb,
+      el('span', { class:'badge g-type', text: icons[g.type] || '📦' }),
+      el('button', { class:'g-del', text:'🗑️', onclick: async (e) => { e.stopPropagation(); await deleteAsset(g.id); } }),
+      el('div', { class:'g-meta' },
+        el('span', { text: (g.title || '').slice(0, 40) }),
+        el('span', { class:'tiny', text: new Date(g.ts).toLocaleString('ar-SA') })
+      ));
+    grid.appendChild(node);
+  }
+  updateGalleryBadges();
+}
+async function deleteAsset(id) {
+  state.gallery = state.gallery.filter(g => g.id !== id);
+  try { await DB.del(id); } catch (e) {}
+  saveLocal(); renderGallery(); toast('تم حذف العنصر', 'ok', 1600);
+}
+function openLightbox(g) {
+  const lb = $('#lightbox'), c = $('#lbContent'), bar = $('#lbBar');
+  c.innerHTML = ''; bar.innerHTML = '';
+  if (g.type === 'image') c.appendChild(el('img', { src:g.src, alt:g.title }));
+  else if (g.type === 'video') { const v = el('video', { src:g.src, controls:true, autoplay:true, playsinline:true }); c.appendChild(v); }
+  else if (g.type === 'audio') { const a = el('audio', { src:g.src, controls:true, autoplay:true, style:'width:min(560px,90vw)' }); c.appendChild(a); }
+  else c.appendChild(el('pre', { style:'max-width:min(760px,92vw);max-height:70dvh;overflow:auto;background:var(--code-bg);padding:16px;border-radius:14px;direction:ltr;text-align:left', text:g.src || '' }));
+  bar.appendChild(el('button', { class:'btn btn-sm', text:'📥 تحميل', onclick: () => downloadURL(g.src, (g.title || 'asset') + (g.type==='video'?'.mp4':g.type==='image'?'.png':'.mp3')) }));
+  bar.appendChild(el('button', { class:'btn btn-sm', text:'✕ إغلاق', onclick: () => lb.classList.add('hide') }));
+  lb.classList.remove('hide');
+}
+$('#lightbox').addEventListener('mousedown', e => { if (e.target.id === 'lightbox') $('#lightbox').classList.add('hide'); });
+$('#galFilter').addEventListener('change', renderGallery);
+$('#galClear').addEventListener('click', async () => {
+  if (!state.gallery.length) return;
+  state.gallery.forEach(g => DB.del(g.id).catch(()=>{}));
+  state.gallery = []; saveLocal(); renderGallery(); toast('تم مسح المعرض', 'ok');
+});
+$('#galSaveFs').addEventListener('click', async () => {
+  if (!state.signedIn) return toast('سجّل الدخول أولاً', 'warn');
+  let n = 0;
+  for (const g of state.gallery.slice(0, 30)) {
+    try {
+      const rec = await DB.get(g.id);
+      if (!rec) continue;
+      const ext = g.type==='video'?'mp4':g.type==='image'?'png':'mp3';
+      await puter.fs.write(`/AI-Studio/${Date.now()}-${g.id}.${ext}`, rec.blob);
+      n++;
+    } catch (e) {}
+  }
+  toast(`تم حفظ ${n} عنصر في مساحة Puter`, n ? 'ok' : 'warn');
+});
+
+
+/* =========================================================================
+   استوديو الفيديو الطويل — التقسيم → التوليد → الدمج
+   ========================================================================= */
+const lv = { scenes: [], running: false, abort: false, narrations: [] };
+
+$('#lvModelChip').addEventListener('click', () => openPicker({ kind:'video', title:'نماذج الفيديو (للمشروع الطويل)', onPick: it => { state.picked.video = it.id; syncPickerLabels(); saveLocal(); } }));
+$('#lvVoiceChip').addEventListener('click', () => openPicker({ kind:'voice', title:'أصوات التعليق', onPick: it => { state.picked.lvVoice = it.id; syncPickerLabels(); saveLocal(); } }));
+$('#lvNarration').addEventListener('change', e => { $('#lvVoiceField').style.display = e.target.checked ? 'flex' : 'none'; });
+
+function parseJSONArray(txt) {
+  if (!txt) return null;
+  const t = String(txt).replace(/```json/gi, '```').replace(/```/g, '');
+  const a = t.indexOf('['), b = t.lastIndexOf(']');
+  if (a >= 0 && b > a) { try { return JSON.parse(t.slice(a, b + 1)); } catch (e) {} }
+  const m = t.match(/\{[\s\S]*\}/); if (m) { try { const o = JSON.parse(m[0]); return Array.isArray(o) ? o : [o]; } catch (e) {} }
+  return null;
+}
+$('#lvPlan').addEventListener('click', async () => {
+  const topic = $('#lvTopic').value.trim();
+  if (!topic) return toast('اكتب موضوع الفيديو أولاً', 'warn');
+  const n = clamp(parseInt($('#lvSceneCount').value || '6', 10), 1, 600);
+  const perSec = clamp(parseInt($('#lvClipSeconds').value || '5', 10), 1, 30);
+  const script = $('#lvScript').value.trim();
+  const btn = $('#lvPlan'); btn.disabled = true;
+  const old = btn.textContent; btn.textContent = '⏳ جارٍ كتابة الخطة…';
+  const sys = `أنت كاتب سيناريو ومصمم مشاهد سينمائي محترف. تُخرج JSON صالحاً فقط دون أي نص إضافي.
+صيغة كل لقطة: {"title":"عنوان قصير","prompt":"وصف بصري دقيق باللغة الإنجليزية يصلح كمحرك لتوليد الفيديو","narration":"الجملة التي يقولها الراوي بالعربية","seconds":عدد}`;
+  const user = `موضوع الفيديو: ${topic}\nعدد اللقطات المطلوبة: ${n}\nمدة كل لقطة: ${perSec} ثانية\n${script ? 'السيناريو المرجعي:\n' + script : ''}\n
+أعطني مصفوفة JSON من ${n} عناصر. كل عنصر يحتوي title و prompt و narration و seconds.
+تدرّج المشاهد من الافتتاحية حتى الخاتمة. اجعل narration قصيراً يناسب ${perSec} ثانية.`;
+  try {
+    const resp = await puter.ai.chat([{ role:'system', content: sys }, { role:'user', content: user }], { model: state.chat.model || undefined, stream:false });
+    const content = resp?.message?.content ?? resp?.content ?? resp?.text ?? '';
+    const arr = parseJSONArray(content);
+    if (!arr || !arr.length) throw new Error('تعذّر قراءة الخطة — جرّب نموذجاً آخر');
+    lv.scenes = arr.slice(0, n).map((s, i) => ({
+      id: nowId(), no: i + 1,
+      title: s.title || `لقطة ${i+1}`,
+      prompt: s.prompt || s.description || topic,
+      narration: s.narration || s.voiceover || '',
+      seconds: clamp(parseInt(s.seconds || perSec, 10) || perSec, 1, 30),
+      status: 'pending', url: null, narrUrl: null, poster: null
+    }));
+    renderScenes(); updateLvStat();
+    toast(`تم توليد خطة من ${lv.scenes.length} لقطة ✓`, 'ok');
+  } catch (e) {
+    toast('فشل توليد الخطة: ' + (e.message || e), 'err');
+    // بديل يدوي: قسّم النص إلى أسطر
+    if (script) {
+      const lines = script.split(/\n+/).filter(Boolean).slice(0, n);
+      lv.scenes = lines.map((l, i) => ({ id: nowId(), no: i+1, title:`لقطة ${i+1}`, prompt: l, narration: l, seconds: perSec, status:'pending', url:null }));
+      renderScenes(); updateLvStat();
+    }
+  } finally { btn.disabled = false; btn.textContent = old; }
+});
+
+function renderScenes() {
+  const box = $('#lvScenes'); box.innerHTML = '';
+  if (!lv.scenes.length) {
+    box.appendChild(el('div', { class:'empty', style:'grid-column:1/-1' }, el('div',{class:'em-ico',text:'🎞️'}), el('p',{text:'اضغط «توليد خطة اللقطات» للبدء.'})));
+    return;
+  }
+  lv.scenes.forEach((s, i) => {
+    const statusMap = { pending:['badge mute','معلّق'], running:['badge info','جارٍ التوليد…'], done:['badge ok','جاهزة'], failed:['badge danger','فشلت'] };
+    const [cls, lbl] = statusMap[s.status] || statusMap.pending;
+    const card = el('div', { class:'scene ' + s.status },
+      el('div', { class:'scene-head' },
+        el('div', { class:'scene-no', text: s.no }),
+        el('span', { class:'badge mute', text: s.title }),
+        el('div', { class:'spacer' }),
+        el('span', { class: cls, text: lbl })
+      ),
+      el('textarea', { placeholder:'وصف المشهد…', value: s.prompt, oninput: e => s.prompt = e.target.value }),
+      s.narration !== undefined ? el('textarea', { placeholder:'التعليق الصوتي (اختياري)', value: s.narration, oninput: e => s.narration = e.target.value }) : null,
+      el('div', { class:'row' },
+        el('label', { class:'tiny muted', text:'⏱' }),
+        el('input', { type:'number', value: s.seconds, min:'1', max:'30', style:'width:74px', oninput: e => s.seconds = clamp(parseInt(e.target.value||'5',10),1,30) }),
+        el('div', { class:'spacer' }),
+        el('button', { class:'btn btn-sm', text:'🔁', title:'إعادة توليد هذه اللقطة', onclick: () => runScene(s) }),
+        el('button', { class:'btn btn-sm', text:'⬆️', title:'أعلى', onclick: () => moveScene(i,-1) }),
+        el('button', { class:'btn btn-sm', text:'⬇️', title:'أسفل', onclick: () => moveScene(i,1) }),
+        el('button', { class:'btn btn-sm btn-danger', text:'🗑️', title:'حذف', onclick: () => { lv.scenes.splice(i,1); lv.scenes.forEach((x,j)=>x.no=j+1); renderScenes(); updateLvStat(); } })
+      ),
+      s.url ? el('div', { class:'scene-stage' },
+        el('video', { class:'scene-video', src: s.url, controls:true, playsinline:true, preload:'metadata' }),
+        el('div', { class:'media-tools' },
+          el('button', { class:'btn', text:'🔍', title:'تكبير', onclick: () => openLightbox({ type:'video', src: s.url, title: s.title }) }),
+          el('button', { class:'btn', text:'📥', title:'تحميل', onclick: () => downloadURL(s.url, `scene-${s.no}.mp4`) })
+        )
+      ) : null,
+      s.poster ? el('div', { class:'scene-stage' },
+        el('img', { class:'scene-poster', src: s.poster, alt: s.title }),
+        el('div', { class:'media-tools' },
+          el('button', { class:'btn', text:'🔍', title:'تكبير', onclick: () => openLightbox({ type:'image', src: s.poster, title: s.title }) }),
+          el('button', { class:'btn', text:'📥', title:'تحميل', onclick: () => downloadURL(s.poster, `poster-${s.no}.png`) })
+        )
+      ) : null,
+      s.narrUrl ? el('div', { class:'scene-audio' },
+        el('div', { class:'wave' }, el('i'),el('i'),el('i'),el('i'),el('i')),
+        el('audio', { src: s.narrUrl, controls:true, preload:'metadata' }),
+        el('span', { class:'badge mute', text:'🔊 تعليق' }),
+        el('button', { class:'btn btn-sm', text:'📥', title:'تحميل', onclick: () => downloadURL(s.narrUrl, `narration-${s.no}.mp3`) })
+      ) : null,
+      s.error ? el('div', { class:'note danger', text: s.error }) : null
+    );
+    box.appendChild(card);
+  });
+}
+function moveScene(i, d) {
+  const j = i + d; if (j < 0 || j >= lv.scenes.length) return;
+  const [x] = lv.scenes.splice(i, 1); lv.scenes.splice(j, 0, x);
+  lv.scenes.forEach((s, k) => s.no = k + 1); renderScenes();
+}
+function updateLvStat() {
+  const done = lv.scenes.filter(s => s.status === 'done').length;
+  const total = lv.scenes.length;
+  const dur = lv.scenes.reduce((a, s) => a + (s.seconds || 0), 0);
+  $('#lvStat').textContent = `${done} / ${total} لقطة · ${fmtDur(dur)}`;
+  $('#navScenes').style.display = total ? 'block' : 'none'; $('#navScenes').textContent = total;
+  $('#mNavScenes').style.display = total ? 'block' : 'none'; $('#mNavScenes').textContent = total;
+  const any = lv.scenes.some(s => s.url);
+  $('#lvMerge').disabled = !any; $('#lvZip').disabled = !any;
+}
+
+/* التقدير الفوري: المدة المتوقعة وعدد الطلبات قبل بدء الإنتاج */
+function updateLvEstimate() {
+  const n = clamp(parseInt($('#lvSceneCount')?.value || '0', 10) || 0, 0, 600);
+  const per = clamp(parseInt($('#lvClipSeconds')?.value || '0', 10) || 0, 0, 30);
+  const secs = n * per;
+  const set = (id, v) => { const e = $('#' + id); if (e) e.textContent = v; };
+  set('lvEstScenes', n ? String(n) : '—');
+  set('lvEstDur', secs ? fmtDur(secs) : '—');
+  set('lvEstReq', n ? String(n + (($('#lvPoster')?.checked) ? n : 0) + (($('#lvNarration')?.checked) ? n : 0)) : '—');
+  const szEl = $('#lvSize');
+  const szTxt = szEl ? (szEl.selectedOptions?.[0]?.textContent || szEl.value || '—') : '—';
+  set('lvEstSize', szTxt);
+  const hrs = secs / 3600;
+  const lbl = $('#lvEstNote');
+  if (lbl) lbl.innerHTML = n
+    ? `الإنتاج المتوقّع: <b>${fmtDur(secs)}</b>${hrs >= 1 ? ` (≈ ${hrs.toFixed(1)} ساعة)` : ''} عبر <b>${n}</b> لقطة · يُنصح بتشغيله على جهاز قوي مع اتصال إنترنت مستقر.`
+    : `حدّد عدد اللقطات ومدة كل لقطة لتظهر التقديرات. الحد الأقصى <b>600</b> لقطة × <b>30</b> ثانية ≈ <b>5 ساعات</b>.`;
+}
+['#lvSceneCount', '#lvClipSeconds', '#lvSize'].forEach(sel => {
+  const e = $(sel); if (e) e.addEventListener('input', updateLvEstimate);
+  if (e) e.addEventListener('change', updateLvEstimate);
+});
+['#lvPoster', '#lvNarration'].forEach(sel => {
+  const e = $(sel); if (e) e.addEventListener('change', updateLvEstimate);
+});
+
+/* إضافة لقطة يدوياً (مفيد للمشروع الطويل) */
+$('#lvAddScene')?.addEventListener('click', () => {
+  const last = lv.scenes[lv.scenes.length - 1];
+  lv.scenes.push({
+    id: nowId(), no: lv.scenes.length + 1,
+    title: `لقطة ${lv.scenes.length + 1}`,
+    prompt: last ? last.prompt : ($('#lvTopic').value.trim() || 'وصف المشهد'),
+    narration: '', seconds: clamp(parseInt($('#lvClipSeconds').value || '5', 10) || 5, 1, 30),
+    status: 'pending', url: null, narrUrl: null, poster: null
+  });
+  renderScenes(); updateLvStat();
+  toast('أُضيفت لقطة جديدة', 'ok', 1500);
+});
+
+async function runScene(s) {
+  const model = state.picked.video || VIDEO_MODELS[0].id;
+  s.status = 'running'; s.error = null; renderScenes(); updateLvStat();
+  try {
+    const res = await generateClip(s.prompt, model, { seconds: s.seconds, size: $('#lvSize').value, audio: $('#lvClipAudio').checked, testMode: $('#lvTest').checked });
+    s.url = res.src; s.el = res.el; s.status = 'done';
+    if ($('#lvPoster').checked) {
+      try {
+        const img = await puter.ai.txt2img(s.prompt, { model:'gpt-image-2', test_mode: $('#lvTest').checked, size:'1024x1024' });
+        s.poster = img.src || '';
+      } catch (e) {}
+    }
+    if ($('#lvNarration').checked && s.narration && s.narration.trim()) {
+      try {
+        const a = await makeSpeech(s.narration, { voice: state.picked.lvVoice || state.picked.ttsVoice, language:'ar' });
+        s.narrUrl = a.src;
+      } catch (e) { s.error = 'فشل التعليق الصوتي: ' + (e.message || e); }
+    }
+    await addToGallery('video', s.prompt, s.src, { model });
+  } catch (e) {
+    s.status = 'failed'; s.error = e.message || String(e);
+  }
+  renderScenes(); updateLvStat();
+}
+$('#lvRun').addEventListener('click', async () => {
+  if (!lv.scenes.length) return toast('ولّد خطة اللقطات أولاً', 'warn');
+  if (lv.running) return;
+  lv.running = true; lv.abort = false;
+  const btn = $('#lvRun'); btn.disabled = true; const old = btn.textContent;
+  btn.textContent = '⏳ جارٍ الإنتاج…';
+  $('#lvProgressWrap').style.display = 'block';
+  for (let i = 0; i < lv.scenes.length; i++) {
+    if (lv.abort) break;
+    const s = lv.scenes[i];
+    if (s.status === 'done' && s.url && !$('#lvForceAll')?.checked) { updateLvStat(); continue; }
+    $('#lvProgress').style.width = ((i) / lv.scenes.length * 100) + '%';
+    await runScene(s);
+    $('#lvProgress').style.width = ((i+1) / lv.scenes.length * 100) + '%';
+  }
+  btn.disabled = false; btn.textContent = old; lv.running = false;
+  updateLvStat();
+  toast(lv.abort ? 'تم إيقاف الإنتاج' : 'انتهى إنتاج اللقطات ✓', lv.abort ? 'warn' : 'ok');
+});
+$('#lvReset').addEventListener('click', () => { lv.scenes = []; renderScenes(); updateLvStat(); $('#lvProgress').style.width = '0'; });
+
+/* ---------------------- الدمج عبر ffmpeg.wasm ---------------------- */
+const FF_PKG    = 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd';
+const FF_CORE   = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm';
+const FF_WORKER = FF_PKG + '/814.ffmpeg.js';   // عامل ffmpeg (يُحمَّل كـ blob لتفادي حظر cross-origin worker)
+let ffmpegInst = null, ffmpegLog = [];
+
+/* تحويل رابط خارجي إلى blob URL — عمّال Web لا يقبلون سكربتات من أصل خارجي */
+async function toBlobURL(url, mime) {
+  const r = await fetch(url, { mode: 'cors' });
+  if (!r.ok) throw new Error('HTTP ' + r.status + ' — ' + url);
+  return URL.createObjectURL(new Blob([await r.arrayBuffer()], { type: mime }));
+}
+
+async function getFFmpeg() {
+  if (ffmpegInst) return ffmpegInst;
+  await loadScript(FF_PKG + '/ffmpeg.js');
+  const api = window.FFmpegWASM || window.FFmpeg;
+  if (!api || !api.FFmpeg) throw new Error('تعذّر تحميل مكتبة ffmpeg.wasm');
+  const ff = new api.FFmpeg();
+  ff.on('log', ({ message }) => { ffmpegLog.push(message); if (ffmpegLog.length > 400) ffmpegLog.shift(); });
+  ff.on('progress', ({ progress }) => { if (progress) $('#lvProgress').style.width = clamp(progress * 100, 0, 100) + '%'; });
+  // النواة + wasm + العامل: كلها blob من نفس الأصل => يعمل على file:// وعلى أي استضافة
+  const [coreURL, wasmURL, classWorkerURL] = await Promise.all([
+    toBlobURL(FF_CORE + '/ffmpeg-core.js', 'text/javascript'),
+    toBlobURL(FF_CORE + '/ffmpeg-core.wasm', 'application/wasm'),
+    toBlobURL(FF_WORKER, 'text/javascript')
+  ]);
+  await ff.load({ coreURL, wasmURL, classWorkerURL });
+  ffmpegInst = ff; return ff;
+}
+async function fetchArrayBuffer(src) {
+  if (!src) throw new Error('مصدر فارغ');
+  if (src.startsWith('data:')) {
+    const b64 = src.split(',')[1]; const bin = atob(b64); const u8 = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i); return u8.buffer;
+  }
+  const r = await fetch(src); if (!r.ok) throw new Error('HTTP ' + r.status);
+  return await r.arrayBuffer();
+}
+$('#lvMerge').addEventListener('click', async () => {
+  const clips = lv.scenes.filter(s => s.url);
+  if (!clips.length) return toast('لا توجد لقطات جاهزة', 'warn');
+  const btn = $('#lvMerge'); btn.disabled = true; const old = btn.textContent;
+  btn.textContent = '⏳ جارٍ الدمج…';
+  $('#lvProgressWrap').style.display = 'block';
+  $('#lvProgress').style.width = '2%';
+  try {
+    toast('جارٍ تحميل محرك الدمج (ffmpeg.wasm) — قد يستغرق دقيقة…', 'info', 6000);
+    const ff = await getFFmpeg();
+    $('#lvProgress').style.width = '12%';
+
+    /* 1) كتابة اللقطات في نظام ملفات ffmpeg وبناء قائمة الدمج */
+    const names = [];
+    for (let i = 0; i < clips.length; i++) {
+      const buf = await fetchArrayBuffer(clips[i].url);
+      await ff.writeFile(`c${i}.mp4`, new Uint8Array(buf));
+      names.push(`c${i}.mp4`);
+    }
+    await ff.writeFile('list.txt', new TextEncoder().encode(names.map(n => `file '${n}'`).join('\n') + '\n'));
+    $('#lvProgress').style.width = '25%';
+
+    /* 2) دمج الفيديو: نسخة سريعة (-c copy) ثم إعادة ترميز كخطة بديلة */
+    try {
+      await ff.exec(['-f','concat','-safe','0','-i','list.txt','-c','copy','-movflags','+faststart','out.mp4']);
+    } catch (e) {
+      ffmpegLog = [];
+      await ff.exec(['-f','concat','-safe','0','-i','list.txt',
+        '-vf','scale=trunc(iw/2)*2:trunc(ih/2)*2','-r','24',
+        '-c:v','libx264','-preset','ultrafast','-crf','27','-pix_fmt','yuv420p',
+        '-c:a','aac','-b:a','128k','-movflags','+faststart','out.mp4']);
+    }
+    $('#lvProgress').style.width = '60%';
+
+    /* 3) التعليق الصوتي: يُزاح زمنياً ليبدأ مع كل لقطة، ثم يُدمج مع الفيديو */
+    const withNarr = clips.filter(c => c.narrUrl);
+    if (withNarr.length) {
+      try {
+        // نقطة بداية كل تعليق = مجموع مدد اللقطات السابقة
+        const startOf = new Map();
+        let t = 0;
+        for (const c of clips) { startOf.set(c.id, t); t += (c.seconds || 0); }
+        const parts = [], labels = [], args = [];
+        let k = 0;
+        for (const c of withNarr) {
+          const buf = await fetchArrayBuffer(c.narrUrl);
+          const raw = `n${k}.src`;
+          await ff.writeFile(raw, new Uint8Array(buf));
+          const ms = Math.round((startOf.get(c.id) || 0) * 1000);
+          args.push('-i', raw);
+          parts.push(`[${k}:a]adelay=${ms}:all=1[a${k}]`);
+          labels.push(`[a${k}]`);
+          k++;
+        }
+        // مزج التعليقات في مسار واحد بمواضعها المطلقة (amix) ثم ترميز mp3
+        const fc = `${parts.join(';')};${labels.join('')}amix=inputs=${k}:normalize=0[ao]`;
+        await ff.exec([...args, '-filter_complex', fc, '-map', '[ao]', '-c:a', 'libmp3lame', '-q:a', '4', 'narr.mp3']);
+        // apad + shortest => يبقى طول الفيديو كما هو مع الصوت دون قطع
+        await ff.exec(['-i','out.mp4','-i','narr.mp3','-map','0:v:0','-map','1:a:0',
+          '-af','apad','-c:v','copy','-c:a','aac','-b:a','160k','-shortest','-movflags','+faststart','final.mp4']);
+        const d = await ff.readFile('final.mp4');
+        deliverMerged(d, 'final.mp4');
+        return;
+      } catch (e) { console.warn('دمج الصوت فشل', e); }
+    }
+    const data = await ff.readFile('out.mp4');
+    deliverMerged(data, 'out.mp4');
+  } catch (e) {
+    toast('فشل الدمج: ' + (e.message || e), 'err', 7000);
+    console.error(ffmpegLog.slice(-25).join('\n'));
+  } finally { btn.disabled = false; btn.textContent = old; }
+});
+function deliverMerged(data, fname) {
+  const blob = new Blob([data.buffer || data], { type:'video/mp4' });
+  downloadBlob(blob, `puter-long-video-${Date.now()}.mp4`);
+  const box = el('div', { class:'media-box', style:'margin-top:12px' },
+    el('div', { class:'m-stage' }, el('video', { src: URL.createObjectURL(blob), controls:true, autoplay:false, playsinline:true })),
+    el('div', { class:'m-bar' },
+      el('span', { class:'badge ok', text:'✔ تم الدمج' }),
+      el('span', { class:'badge mute', text: fmtBytes(blob.size) }),
+      el('div', { class:'spacer' }),
+      el('button', { class:'btn btn-sm btn-primary', text:'📥 تحميل الفيديو النهائي', onclick: () => downloadBlob(blob, `puter-long-video-${Date.now()}.mp4`) })
+    ));
+  const holder = $('#lvScenes'); holder.insertBefore(box, holder.firstChild);
+  toast('تم إنشاء الفيديو الطويل ✓', 'ok');
+}
+$('#lvZip').addEventListener('click', async () => {
+  const clips = lv.scenes.filter(s => s.url);
+  if (!clips.length) return toast('لا توجد لقطات', 'warn');
+  const btn = $('#lvZip'); btn.disabled = true;
+  try {
+    await loadScript('https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js');
+    const zip = new JSZip();
+    let n = 0;
+    for (let i = 0; i < clips.length; i++) {
+      try { const b = await fetchArrayBuffer(clips[i].url); zip.file(`scene-${String(i+1).padStart(3,'0')}.mp4`, b); n++; } catch (e) {}
+    }
+    const blob = await zip.generateAsync({ type:'blob' });
+    downloadBlob(blob, `puter-scenes-${Date.now()}.zip`);
+    toast(`تم تجهيز حزمة بـ ${n} لقطة ✓`, 'ok');
+  } catch (e) {
+    toast('تعذّر إنشاء الحزمة — سيتم تحميل اللقطات فردياً', 'warn');
+    clips.forEach((c, i) => setTimeout(() => downloadURL(c.url, `scene-${i+1}.mp4`), i * 400));
+  } finally { btn.disabled = false; }
+});
+
+
+/* =========================================================================
+   الصوتيات — TTS
+   ========================================================================= */
+function populateTtsModelSelect() {
+  const prov = $('#ttsProvider').value;
+  const sel = $('#ttsModel'); const cur = sel.value;
+  sel.innerHTML = '';
+  const list = TTS_MODELS[prov] || [];
+  if (!list.length) sel.appendChild(el('option', { value:'default', text:'المحرك الافتراضي للمزوّد' }));
+  else list.forEach(m => sel.appendChild(el('option', { value:m, text:m })));
+  if (cur && [...sel.options].some(o => o.value === cur)) sel.value = cur;
+  $('#ttsProviderBadge').textContent = TTS_PROVIDER_NAMES[prov] || prov;
+  $('#ttsEngineField').style.display = prov === 'aws' ? 'flex' : 'none';
+}
+function populateTtsEngineSelect() {
+  const sel = $('#ttsEngine');
+  const statics = ['standard','neural','generative','long-form','short-form'];
+  const fromApi = state.models.ttsEngines.filter(e => !e.provider || e.provider === 'aws').map(e => e.id);
+  const all = [...new Set([...fromApi, ...statics])];
+  const cur = sel.value; sel.innerHTML = '';
+  all.forEach(e => sel.appendChild(el('option', { value:e, text:e })));
+  if (cur && [...sel.options].some(o => o.value === cur)) sel.value = cur;
+}
+function populateLangSelect() {
+  const sel = $('#ttsLang'); const cur = sel.value;
+  const extra = new Set();
+  state.models.ttsVoices.forEach(v => (v.langs||[]).forEach(l => extra.add(l)));
+  sel.innerHTML = '';
+  LANGS.forEach(([code, label]) => sel.appendChild(el('option', { value:code, text:label })));
+  [...extra].filter(l => l && !LANGS.some(x => x[0] === l)).forEach(l => sel.appendChild(el('option', { value:l, text:l })));
+  if (cur && [...sel.options].some(o => o.value === cur)) sel.value = cur;
+}
+$('#ttsProvider').addEventListener('change', async () => { populateTtsModelSelect(); await loadTtsCatalog(); });
+$('#ttsVoiceChip').addEventListener('click', () => openPicker({ kind:'voice', title:'الأصوات المتاحة', onPick: it => { state.picked.ttsVoice = it.id; syncPickerLabels(); saveLocal(); toast('الصوت: ' + it.title, 'ok', 1600); } }));
+
+async function makeSpeech(text, o = {}) {
+  const provider = o.provider || $('#ttsProvider').value;
+  const model = o.model || $('#ttsModel').value;
+  const voice = o.voice || state.picked.ttsVoice;
+  const language = o.language || $('#ttsLang').value;
+  const engine = o.engine || $('#ttsEngine').value;
+  const instructions = o.instructions ?? $('#ttsInstructions').value;
+  const opts = { provider };
+  if (model && model !== 'default') opts.model = model;
+  if (voice) opts.voice = voice;
+  if (language) opts.language = language;
+  if (provider === 'aws') { if (engine) opts.engine = engine; if ($('#ttsSsml').checked) opts.ssml = true; }
+  if ((provider === 'openai' || provider === 'gemini') && instructions) opts.instructions = instructions;
+  if (provider === 'openai') opts.response_format = 'mp3';
+  let a;
+  try { a = await puter.ai.txt2speech(text, opts); }
+  catch (e) {
+    try { a = await puter.ai.txt2speech(text, language, voice || undefined, provider === 'aws' ? engine : undefined); }
+    catch (e2) { a = await puter.ai.txt2speech(text); }
+  }
+  const src = (a && (a.src || a.querySelector?.('source')?.src || a.audio?.src)) || '';
+  // بعض المحركات تعيد عنصراً جاهزاً وبعضها يعيد رابطاً فقط — نوحّد الشكل هنا
+  let node = a;
+  if (!node || node.tagName !== 'AUDIO') {
+    node = document.createElement('audio');
+    node.src = src;
+    node.controls = true;
+    node.preload = 'metadata';
+    node.playsInline = true;
+  } else {
+    node.controls = true;
+  }
+  return { el: node, src: src || node.src };
+}
+$('#ttsRun').addEventListener('click', async () => {
+  const text = $('#ttsText').value.trim();
+  if (!text) return toast('اكتب النص أولاً', 'warn');
+  const btn = $('#ttsRun'); btn.disabled = true; const old = btn.textContent; btn.textContent = '⏳ جارٍ التوليد…';
+  const out = $('#ttsResult');
+  out.innerHTML = '<div class="empty"><div class="spinner"></div><p>جارٍ توليد الصوت…</p></div>';
+  try {
+    const parts = $('#ttsBatch').checked ? text.split(/\n{2,}/).map(s => s.trim()).filter(Boolean) : [text];
+    const results = [];
+    for (const p of parts) results.push(await makeSpeech(p));
+    out.innerHTML = '';
+    const box = el('div', { class:'media-box' });
+    const stage = el('div', { class:'m-stage' });
+    results.forEach(r => {
+      const a = r.el; a.controls = true;
+      const card = el('div', { class:'audio-player-card' },
+        el('div', { class:'wave' }, el('i'),el('i'),el('i'),el('i'),el('i')),
+        a,
+        el('span', { class:'badge mute', text: state.picked.ttsVoice || 'تلقائي' }),
+        el('button', { class:'btn btn-sm', text:'📥 تحميل', onclick: () => downloadURL(r.src, `ai-voice-${Date.now()}.mp3`) })
+      );
+      stage.appendChild(card);
+      a.play().catch(()=>{});
+    });
+    box.appendChild(stage);
+    box.appendChild(el('div', { class:'m-bar' },
+      el('span', { class:'badge', text: $('#ttsProvider').value }),
+      el('span', { class:'badge mute', text: state.picked.ttsVoice || 'صوت تلقائي' }),
+      el('span', { class:'badge mute', text: $('#ttsLang').value }),
+      el('div', { class:'spacer' }),
+      el('button', { class:'btn btn-sm btn-primary', text:'📥 تحميل الكل', onclick: () => results.forEach((r,i) => setTimeout(() => downloadURL(r.src, `ai-voice-${i+1}.mp3`), i*400)) })
+    ));
+    out.appendChild(box);
+    $('#ttsStat').textContent = results.length + ' مقطع صوتي';
+    for (const r of results) await addToGallery('audio', text.slice(0, 80), r.src, { model: state.picked.ttsVoice });
+    toast('تم توليد الصوت ✓', 'ok');
+  } catch (e) {
+    out.innerHTML = `<div class="empty"><div class="em-ico">⚠️</div><p>${esc(e.message || e)}</p></div>`;
+    toast('فشل توليد الصوت', 'err');
+  } finally { btn.disabled = false; btn.textContent = old; }
+});
+
+/* =========================================================================
+   الرؤية — OCR / تفريغ / تغيير صوت
+   ========================================================================= */
+$('#ocrRun').addEventListener('click', async () => {
+  const f = $('#ocrFile').files?.[0];
+  if (!f) return toast('اختر صورة أولاً', 'warn');
+  $('#ocrOut').textContent = '⏳ جارٍ الاستخراج…';
+  try {
+    const r = await puter.ai.img2txt(f);
+    const t = typeof r === 'string' ? r : (r?.text || r?.message?.content || JSON.stringify(r));
+    $('#ocrOut').textContent = t || '(لا يوجد نص)';
+    await addToGallery('text', 'استخراج نص من صورة', t, { text: true, mime: 'text/plain' });
+  } catch (e) { $('#ocrOut').textContent = '⚠️ ' + (e.message || e); }
+});
+$('#sttRun').addEventListener('click', async () => {
+  const f = $('#sttFile').files?.[0];
+  if (!f) return toast('اختر ملفاً صوتياً', 'warn');
+  $('#recOut').textContent = '⏳ جارٍ التفريغ…';
+  try {
+    const r = await puter.ai.speech2txt(f);
+    const t = typeof r === 'string' ? r : (r?.text || r?.message?.content || '');
+    $('#recOut').textContent = t || '(لم يُكتشف نص)';
+    await addToGallery('text', 'تفريغ صوتي', t, { text: true, mime: 'text/plain' });
+  } catch (e) { $('#recOut').textContent = '⚠️ ' + (e.message || e); }
+});
+$('#vchgVoiceChip').addEventListener('click', () => openPicker({ kind:'voice', title:'الصوت الجديد', onPick: it => { state.picked.vchgVoice = it.id; syncPickerLabels(); saveLocal(); } }));
+$('#vchgRun').addEventListener('click', async () => {
+  const f = $('#vchgFile').files?.[0];
+  if (!f) return toast('اختر ملفاً صوتياً', 'warn');
+  if (!state.picked.vchgVoice) return toast('اختر الصوت الجديد', 'warn');
+  $('#vchgOut').innerHTML = '<div class="spinner sm"></div>';
+  try {
+    const url = URL.createObjectURL(f);
+    const r = await puter.ai.speech2speech(url, { voice: state.picked.vchgVoice, model: 'eleven_multilingual_v2' });
+    const src = r.src || r?.audio?.src || '';
+    $('#vchgOut').innerHTML = '';
+    const a = el('audio', { src, controls:true, style:'width:100%' });
+    $('#vchgOut').appendChild(a);
+    $('#vchgOut').appendChild(el('button', { class:'btn btn-sm', style:'margin-top:8px', text:'📥 تحميل', onclick: () => downloadURL(src, `voice-changed-${Date.now()}.mp3`) }));
+    await addToGallery('audio', 'تغيير صوت', src, { model: state.picked.vchgVoice });
+  } catch (e) { $('#vchgOut').innerHTML = `<div class="note danger">${esc(e.message || e)}</div>`; }
+});
+
+/* =========================================================================
+   الإعدادات — نسخ احتياطي + تهيئة
+   ========================================================================= */
+$('#exportAll').addEventListener('click', () => {
+  const dump = { exportedAt: new Date().toISOString(), settings: state.settings, picked: state.picked, chat: state.chat.messages, gallery: state.gallery };
+  downloadBlob(new Blob([JSON.stringify(dump, null, 2)], { type:'application/json' }), `puter-pro-backup-${new Date().toISOString().slice(0,10)}.json`);
+  toast('تم تصدير البيانات ✓', 'ok');
+});
+$('#importAll').addEventListener('click', () => $('#importFile').click());
+$('#importFile').addEventListener('change', async e => {
+  const f = e.target.files?.[0]; if (!f) return;
+  try {
+    const d = JSON.parse(await f.text());
+    if (d.settings) Object.assign(state.settings, d.settings);
+    if (d.picked) Object.assign(state.picked, d.picked);
+    if (Array.isArray(d.chat)) { state.chat.messages = d.chat; renderChat(); }
+    if (Array.isArray(d.gallery)) { state.gallery = d.gallery; renderGallery(); }
+    applyTheme(state.settings.dark !== false);
+    syncPickerLabels(); saveLocal();
+    toast('تم الاستيراد ✓', 'ok');
+  } catch (err) { toast('ملف غير صالح', 'err'); }
+});
+$('#resetAll').addEventListener('click', async () => {
+  if (!confirm('سيتم حذف كل المحادثة والمعرض والإعدادات من هذا المتصفح. هل أنت متأكد؟')) return;
+  localStorage.removeItem(LS_KEY);
+  try { await DB.all().then(list => Promise.all((list||[]).map(x => DB.del(x.id)))); } catch (e) {}
+  location.reload();
+});
+
+/* ---------------------- اختصارات لوحة المفاتيح ---------------------- */
+document.addEventListener('keydown', e => {
+  const typing = /INPUT|TEXTAREA/.test(document.activeElement?.tagName || '');
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openPalette(); }
+  else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'm') { e.preventDefault(); openPicker({ kind:'chat', title:'نماذج المحادثة', onPick: it => { state.chat.model = it.id; syncPickerLabels(); saveLocal(); } }); }
+  else if (e.key === 'Escape') {
+    if (!$('#modelModal').classList.contains('hide')) closeModal('modelModal');
+    else if (!$('#paletteModal').classList.contains('hide')) closeModal('paletteModal');
+    else if (!$('#lightbox').classList.contains('hide')) $('#lightbox').classList.add('hide');
+    else if (state.chat.abort) state.chat.abort.abort();
+  }
+});
+$('#btnMenu').addEventListener('click', () => go('chat'));
+
+/* ---------------------- التهيئة ---------------------- */
+(async function init() {
+  loadLocal();
+  applyTheme(state.settings.dark !== false);
+  if (state.settings.sys) { $('#sysPrompt').value = state.settings.sys; state.chat.sys = state.settings.sys; }
+  if (state.settings.temp !== undefined) { state.chat.temp = state.settings.temp; $('#tempSlider').value = state.settings.temp; $('#tempVal').textContent = state.settings.temp; }
+  renderChat();
+  renderGallery();
+  populateTtsModelSelect();
+  populateTtsEngineSelect();
+  populateLangSelect();
+  syncPickerLabels();
+  if (typeof updateLvEstimate === 'function') updateLvEstimate();
+
+  const hash = (location.hash || '').replace('#','');
+  if (hash && $('#view-' + hash)) { go(hash); _view = hash; syncPickerLabels(); }
+
+  if (!window.puter) {
+    toast('تعذّر تحميل Puter.js — تحقّق من اتصال الإنترنت ثم أعد تحميل الصفحة', 'err', 9000);
+    return;
+  }
+  await Promise.allSettled([ loadChatModels(), loadImageModels(), refreshAuth() ]);
+  await loadTtsCatalog();
+  syncPickerLabels();
+  if (state.chat.model) { $('#chatModelName').textContent = state.chat.model; }
+  saveLocal();
+})();
+
+
+</script>
+</body>
+</html>
+
